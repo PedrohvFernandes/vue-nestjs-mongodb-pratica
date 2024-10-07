@@ -162,6 +162,8 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
 
     - Depois de um ```npx shadcn-vue@latest add```, de um ```ctrl+a+space``` para selecionar todos os componentes e de enter para a lib criar esses componentes.
 
+    - Ou ```npx shadcn-vue@latest add button``` para adicionar um componente especificio 
+
     - Ele ira gerar o arquivo ```components.json```
     Você tem que ter criado o mapping paths no tsconfig.json. Porque ele usa, para saber onde colocar os componentes da lib e os utilitários
     ```json
