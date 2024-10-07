@@ -11,6 +11,7 @@ module.exports = {
     './components/**/*.{ts,vue}',
     './app/**/*.{ts,vue}',
     './src/**/*.{ts,vue}',
+    './index.html'
   ],
 
   theme: {
