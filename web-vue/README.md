@@ -23,6 +23,16 @@
   Link do Marketplace do VS: https://marketplace.visualstudio.com/items?itemName=Vue.volar
 }
 ```
+### Nome: Vetur TypeScript performance workaround
+```
+{
+  ID: snovakovic.vtpw
+  Descrição: Workaround for the performance issues with vetur plugin when used in combination with TypeScript
+  Versão: 0.1.2
+  Editor: Stefan Novakovic
+  Link do Marketplace do VS: https://marketplace.visualstudio.com/items?itemName=snovakovic.vtpw
+}
+```
 
 ### Se necessário: Nome: Vue Extension Box. 
 
