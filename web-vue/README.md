@@ -71,7 +71,7 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
       export default {
         content: [
           "./index.html",
-          "./src/**/*.{vue,js,ts,jsx,tsx}",
+          "./src/**/*.{vue,js,ts}",
         ],
         theme: {
           extend: {},
