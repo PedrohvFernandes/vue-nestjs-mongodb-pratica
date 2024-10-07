@@ -142,3 +142,31 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
   Para caso você ira usar o vercel para publicar seu projeto.
 
   ### Configurando componentes usando a lib shadncn-vue(igual a shadcn-ui do react)
+
+  - [Docs - Shadcn-vue](https://www.shadcn-vue.com/docs/installation/vite)
+    - De um ```npx shadcn-vue@latest init```
+      - O que eu selecionei
+        ```
+        npx shadcn-vue@latest init
+        Need to install the following packages:
+        shadcn-vue@0.10.5
+        Ok to proceed? (y)
+        √ Would you like to use TypeScript? (recommended)? ...yes
+        √ Which framework are you using? » Vite
+        √ Which style would you like to use? » New York
+        √ Which color would you like to use as base color? » Slate
+        √ Where is your tsconfig.json file? ... ./tsconfig.json
+        √ Where is your global CSS file? (this file will be overwritten) ... src/assets/index.css
+        √ Write configuration to components.json. Proceed? ... yes
+        ```
+
+    - Depois de um ```npx shadcn-vue@latest add```, de um ```ctrl+a+space``` para selecionar todos os componentes e de enter para a lib criar esses componentes.
+
+    - Ele ira gerar o arquivo ```components.json```
+    Você tem que ter criado o mapping paths no tsconfig.json. Porque ele usa, para saber onde colocar os componentes da lib e os utilitários
+    ```json
+      "aliases": {
+      "components": "@/components",
+      "utils": "@/lib/utils"
+     }
+    ```

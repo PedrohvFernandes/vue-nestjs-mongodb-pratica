@@ -1,10 +1,8 @@
 <!-- 
   Aqui fazemos os scripts para o vuejs. Podemos importar variáveis, objetos, componentes, criar variaveis, tipos, etc. Typar o componente...
-
-  Lembrando que o import do vue para componentes vue ele não fica entre {} igual o react, mas você declara um nome dinamico aqui
 -->
 <script setup lang="ts">
-import HelloWorld from './components/hello-world.vue'
+import HelloWorld from './components/hello-world/hello-world.vue'
 </script>
 
 <!-- 
