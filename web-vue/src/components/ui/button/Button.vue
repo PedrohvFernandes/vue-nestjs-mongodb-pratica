@@ -10,6 +10,7 @@ interface Props extends PrimitiveProps {
   class?: HTMLAttributes['class']
 }
 
+// O defineProps é uma função que define as propriedades que o componente pode receber e nós podemos ter acesso a esses props no template, por exemplo: props.class e desestruturar props -->  :class="cn(buttonVariants({ variant, size }), props.class)"
 const props = withDefaults(defineProps<Props>(), {
   as: 'button',
 })

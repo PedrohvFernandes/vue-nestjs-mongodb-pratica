@@ -4,17 +4,24 @@ import { ConfigRoutes } from './config'
 import { Comments } from './pages/comments'
 import { Home } from './pages/home'
 import { NotFound } from './pages/not-found'
+import { DefaultLayout } from './layouts'
 
 const routes = [
   {
     path: ConfigRoutes.comments.default.source.path,
-    name: ConfigRoutes.comments.default.source.name,
-    component: Home,
-  },
-  {
-    path: ConfigRoutes.comments.comments.path,
-    name: ConfigRoutes.comments.comments.name,
-    component: Comments,
+    component: DefaultLayout,
+    children: [
+      {
+        path: ConfigRoutes.comments.default.source.path,
+        name: ConfigRoutes.comments.default.source.name,
+        component: Home,
+      },
+      {
+        path: ConfigRoutes.comments.comments.path,
+        name: ConfigRoutes.comments.comments.name,
+        component: Comments,
+      },
+    ],
   },
   {
     path: ConfigRoutes.comments.default.notFound.pathMatch,
