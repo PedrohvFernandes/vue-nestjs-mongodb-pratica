@@ -3,7 +3,7 @@ import { FooterDefault, HeaderDefault } from '@/components'
 </script>
 
 <template>
-  <div class="flex flex-col h-screen">
+  <div class="flex flex-col min-h-screen pt-20">
     <HeaderDefault />
     <main class="flex-1 p-4">
       <!-- 
