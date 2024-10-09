@@ -12,6 +12,11 @@
     "lint:fix": "eslint . --fix",
     "lint:fixmysrc": "eslint src/**/*.{ts,vue} --fix"
   },
+  "overrides": {
+    "vite": {
+      "rollup": "npm:@rollup/wasm-node"
+    }
+  },
   "dependencies": {
     "@radix-icons/vue": "^1.0.0",
     "@unovis/ts": "^1.4.3-beta.0",
