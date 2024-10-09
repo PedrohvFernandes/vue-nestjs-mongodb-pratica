@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ButtonSecondary } from '@/components/buttons'
+import { ButtonSecondary } from '@/components'
 import { ConfigRoutes } from '@/config'
 </script>
 

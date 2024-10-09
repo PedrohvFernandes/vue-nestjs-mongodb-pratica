@@ -1,9 +1,7 @@
 import { createWebHistory, createRouter } from 'vue-router'
 // https://router.vuejs.org/guide/
 import { ConfigRoutes } from './config'
-import { Comments } from './pages/comments'
-import { Home } from './pages/home'
-import { NotFound } from './pages/not-found'
+import { Comments, Home, NotFound } from './pages'
 import { DefaultLayout } from './layouts'
 
 const routes = [

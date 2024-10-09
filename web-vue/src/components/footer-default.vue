@@ -1,0 +1,34 @@
+<script setup lang="ts">
+import useGetDateFormatted from '@/utils/get-date-formatted'
+
+import { BottomLine } from '.'
+import { Github } from 'lucide-vue-next'
+
+import { ConfigBases } from '@/config'
+
+const { formattedCurrentYear } = useGetDateFormatted()
+</script>
+
+<template>
+  <footer className="w-full bg-primary text-white p-5 text-xs md:text-base">
+    <div className="container flex items-center justify-between gap-2 w-full">
+      <div className="flex items-center opacity-70 gap-2">
+        <IconCoffee class-name="w-10 md:w-auto" />
+        <span className="font-bold ">
+          © {{ formattedCurrentYear().year }}
+          <span class="tracking-widest">Comments</span> Inc.
+        </span>
+      </div>
+      <BottomLine variant-color-bottom="colorBottomPrimaryForeground">
+        <a
+          className="flex items-center gap-2"
+          :target="ConfigBases.comments.gitHub.target.blank"
+          :href="ConfigBases.comments.gitHub.baseUrls.perfil"
+        >
+          <Github />
+          <span>Meu GitHub</span>
+        </a>
+      </BottomLine>
+    </div>
+  </footer>
+</template>
