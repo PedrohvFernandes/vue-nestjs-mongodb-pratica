@@ -149,7 +149,7 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
       "rewrites": [{ "source": "/(.*)", "destination": "/" }]
     }
   ```
-  Para caso você ira usar o vercel para publicar seu projeto.
+  Para caso você use o vercel para publicar seu projeto.
 
   ### Configurando componentes usando a lib shadncn-vue(igual a shadcn-ui do react)
 
