@@ -185,3 +185,5 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
   ### [Sistema de rotas Vue](https://chatgpt.com/c/670581be-0058-8010-a5b0-a8e523a0a9c6)
 
   ### [Vue 3 Props e Defaults](https://chatgpt.com/c/6705dcc5-4ddc-8010-8120-30d668d1dfcf)
+
+  ### [Utilizando o SVG como um componente no Vue e Vite](https://wallacemaxters.com.br/blog/101/utilizando-o-svg-como-um-componente-no-vue-e-vite#google_vignette)
