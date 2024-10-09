@@ -187,3 +187,17 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
   ### [Vue 3 Props e Defaults](https://chatgpt.com/c/6705dcc5-4ddc-8010-8120-30d668d1dfcf)
 
   ### [Utilizando o SVG como um componente no Vue e Vite](https://wallacemaxters.com.br/blog/101/utilizando-o-svg-como-um-componente-no-vue-e-vite#google_vignette)
+
+  ### Erro na vercel, do deploy usando o Npm e vite: Error: Cannot find module @rollup/rollup-linux-x64-gnu
+
+  Solução:
+  ```json
+    "overrides": {
+    "vite": {
+      "rollup": "npm:@rollup/wasm-node"
+    }
+  },
+  ```
+  Mais soluções:
+    - [Solução 1](https://github.com/vitejs/vite/issues/15167)
+    - [Solução 2](https://stackoverflow.com/questions/77569907/error-in-react-vite-project-due-to-rollup-dependency-module-not-found)
