@@ -8,5 +8,48 @@ export default {
 <template>
   <div>
     <h1>Comments</h1>
+    <h1>Comments</h1>
+
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+    <h1>Comments</h1>
+
+    <h1>Comments</h1>
   </div>
 </template>

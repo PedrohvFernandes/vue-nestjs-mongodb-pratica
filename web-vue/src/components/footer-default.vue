@@ -11,8 +11,10 @@ const { formattedCurrentYear } = useGetDateFormatted()
 </script>
 
 <template>
-  <footer className="w-full bg-primary text-white p-5 text-xs md:text-base">
-    <div className="container flex items-center justify-between gap-2 w-full">
+  <footer
+    className="w-full bg-primary text-white ring-1 ring-primary-foreground/25 p-5 text-xs md:text-base"
+  >
+    <div className="container flex items-center justify-between gap-2">
       <div className="flex items-center opacity-70 gap-2">
         <IconCommentComponent class="size-10" />
         <span className="font-bold ">

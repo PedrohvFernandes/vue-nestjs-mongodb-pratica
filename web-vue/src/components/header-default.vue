@@ -2,14 +2,14 @@
 import { ConfigRoutes } from '@/config'
 import { IconCommentComponent } from '@/assets/icons'
 import { Slash } from 'lucide-vue-next'
-import ItemMenuLink from './item-menu-link.vue'
+import { ItemMenuLink } from '.'
 </script>
 
 <template>
   <header
-    class="w-full fixed top-0 z-10 p-4 backdrop-blur-sm bg-primary/30 ring-1 ring-primary-foreground/25 shadow-lg"
+    class="w-full fixed top-0 z-10 p-4 backdrop-blur-sm bg-primary/30 ring-1 ring-primary-foreground/25 shadow-lg drop-shadow-lg"
   >
-    <div className="container flex items-center justify-between gap-2 w-full">
+    <div className="container flex items-center justify-between gap-2">
       <div class="flex items-center gap-2">
         <IconCommentComponent class="size-10" />
         <Slash class="text-primary-foreground/25" />
@@ -26,9 +26,6 @@ import ItemMenuLink from './item-menu-link.vue'
           :name="ConfigRoutes.comments.comments.name"
         />
       </nav>
-      <!-- <div
-      class="absolute h-full w-full top-0 left-0 bg-primary blur-sm opacity-80 -z-10"
-    ></div> -->
     </div>
   </header>
 </template>
