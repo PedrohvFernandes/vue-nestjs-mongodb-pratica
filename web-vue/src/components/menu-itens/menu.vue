@@ -45,7 +45,11 @@ onUnmounted(() => {
     <SheetTrigger as-child class="flex lg:hidden">
       <Button class="flex items-center gap-2">
         Open Menu
-        <Badge class="bg-foreground hidden sm:flex lg:hidden"> Ctrl K </Badge>
+        <Badge
+          class="bg-foreground ring-1 ring-primary-foreground/25 hidden sm:flex lg:hidden"
+        >
+          Ctrl K
+        </Badge>
       </Button>
     </SheetTrigger>
     <SheetContent>
