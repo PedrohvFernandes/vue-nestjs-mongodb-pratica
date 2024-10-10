@@ -6,7 +6,7 @@
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-    class="size-5 md:size-10"
+    class="size-5 sm:size-6 md:size-10"
   >
     <rect width="512" height="512" fill="url(#pattern0_2070_206)" />
     <defs>
