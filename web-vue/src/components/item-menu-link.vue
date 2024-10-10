@@ -16,7 +16,7 @@ const props = defineProps<IProps>()
     :to="to"
     :class="
       cn(
-        'font-medium hover:underline',
+        'font-medium hover:underline flex-1 text-center',
         $route.path === to
           ? 'text-primary-foreground underline opacity-60'
           : 'text-primary-foreground',

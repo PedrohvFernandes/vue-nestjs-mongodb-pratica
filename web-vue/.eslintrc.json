@@ -1,3 +1,6 @@
 {
-  "extends": "@pedrohvfernandes/eslint-config-vue/vue"
+  "extends": "@pedrohvfernandes/eslint-config-vue/vue",
+  "rules":{
+    "@typescript-eslint/no-unused-vars": "off"
+  }
 }

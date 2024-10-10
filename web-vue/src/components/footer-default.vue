@@ -16,7 +16,7 @@ const { formattedCurrentYear } = useGetDateFormatted()
   >
     <div className="container flex items-center justify-between gap-2">
       <div className="flex items-center opacity-70 gap-2">
-        <IconCommentComponent class="size-10" />
+        <IconCommentComponent />
         <span className="font-bold ">
           © {{ formattedCurrentYear().year }}
           <span class="tracking-widest">Comments</span> Inc.
