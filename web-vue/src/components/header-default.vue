@@ -11,7 +11,7 @@ import { Itens, Menu } from './menu-itens'
     <div className="container flex items-center justify-between gap-2">
       <div class="flex items-center gap-2">
         <IconCommentComponent />
-        <Slash class="text-primary-foreground/25 size-5 md:size-10" />
+        <Slash class="text-primary-foreground/25 size-5 md:size-7" />
         <h1
           class="text-sm sm:text-xl md:text-2xl font-bold uppercase tracking-widest"
         >
