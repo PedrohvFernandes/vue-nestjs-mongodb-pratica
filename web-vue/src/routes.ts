@@ -1,10 +1,10 @@
-import { createWebHistory, createRouter } from 'vue-router'
+import { createWebHistory, createRouter, RouteRecordRaw } from 'vue-router'
 // https://router.vuejs.org/guide/
 import { ConfigRoutes } from './config'
 import { Comments, Home, NotFound } from './pages'
 import { DefaultLayout } from './layouts'
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
   {
     path: ConfigRoutes.comments.default.source.path,
     component: DefaultLayout,
@@ -25,6 +25,7 @@ const routes = [
     path: ConfigRoutes.comments.default.notFound.pathMatch,
     name: ConfigRoutes.comments.default.notFound.name,
     component: NotFound,
+    // redirect: ConfigRoutes.comments.login.path,
   },
   {
     path: ConfigRoutes.comments.default.notFound.next.pathMatch,
