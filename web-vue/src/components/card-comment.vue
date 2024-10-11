@@ -16,7 +16,7 @@ import {
 </script>
 
 <template>
-  <div class="max-w-2xl p-2">
+  <div class="max-w-2xl p-2 drop-shadow-lg">
     <article
       class="flex flex-col gap-4 p-6 mb-3 text-base bg-primary ring ring-primary-foreground/25 rounded"
     >
