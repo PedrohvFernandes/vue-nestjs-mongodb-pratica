@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { cn } from '@/lib'
 import { RouterLink } from 'vue-router'
+import { BottomLine } from './bottom-line'
 
 interface IProps {
   to: string
@@ -12,17 +13,22 @@ const props = defineProps<IProps>()
 </script>
 
 <template>
-  <RouterLink
-    :to="to"
+  <BottomLine
+    variant-color-bottom="colorBottomPrimaryForeground"
+    variant-hover-before="beforeEmpty"
+    variant-opacity="opacity60"
     :class="
       cn(
-        'font-medium hover:underline flex-1 text-center',
-        $route.path === to
-          ? 'text-primary-foreground underline opacity-60'
-          : 'text-primary-foreground',
+        'flex-1 font-medium',
+        $route.path === to && 'before:w-full opacity-100 pointer-events-none',
+        // ? 'before:w-full opacity-100 pointer-events-none'
+        // : 'opacity-60',
         props.class,
       )
     "
-    >{{ name }}</RouterLink
   >
+    <RouterLink :to="props.to">
+      {{ props.name }}
+    </RouterLink>
+  </BottomLine>
 </template>

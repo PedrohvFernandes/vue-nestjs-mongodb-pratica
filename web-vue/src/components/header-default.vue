@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { IconCommentComponent } from '@/assets/icons'
 import { Slash } from 'lucide-vue-next'
-import { Itens, Menu } from './menu-itens'
+import { Itens, Menu } from './menu'
+import { DarkModeSwitch } from '.'
 </script>
 
 <template>
@@ -21,9 +22,10 @@ import { Itens, Menu } from './menu-itens'
           Comments
         </h1>
       </div>
-      <nav>
+      <nav class="flex items-center justify-center gap-2">
         <Itens class="hidden lg:flex" />
         <Menu />
+        <DarkModeSwitch class="hidden lg:flex" />
       </nav>
     </div>
     <!-- 

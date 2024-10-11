@@ -57,7 +57,7 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
   - [Uma lib parecida com radix-ui do react, diferença que adaptada pra vue](https://www.radix-vue.com/overview/getting-started.html)
 - [TailwindCss, mesmo framework css para React](https://tailwindcss.com/docs/guides/vite#vue)
 
-- [Eslint para vue 3](https://www.youtube.com/watch?v=rMoHmWZXySM)
+- [Eslint para vue 3 - Eslint no Vue 3 | Como configurar o eslint no vue 3](https://www.youtube.com/watch?v=rMoHmWZXySM)
 
 ## Sequencia de instalação
 
@@ -201,3 +201,35 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
   Mais soluções:
     - [Solução 1](https://github.com/vitejs/vite/issues/15167)
     - [Solução 2](https://stackoverflow.com/questions/77569907/error-in-react-vite-project-due-to-rollup-dependency-module-not-found)
+
+
+### [Vue 3 | O básico para você iniciar com o Vue 3](https://www.youtube.com/watch?v=xS9KVesgQ28)
+  - v-model
+  - refs e reactive
+  - v-if --> Criando outra template dentro de outra, para por exemplo mostrar um email na tela, caso o usuario tenha colocado um email no input e email. É tipo um ternario do react
+    - Ex: ```<template v-if="user.email.length"> <p>Email vazio</p> </template>``` --> Aí esse template vai dentro de outro template, e só vai aparecer se o email do usuario for maior que 0
+  - v-else --> Se o v-if não for verdadeiro, ele vai mostrar o que esta dentro do v-else: Ex: ```<template v-else> <p>Email: {{user.email}}</p> </template>```
+  - onMounted --> É tipo o useEffect do react, ele é chamado quando o componente é montado
+  - form
+  - v-for --> lista de itens, tipo o map do react
+  - Botão com evento click para remover um item da lista -->  v-on
+    - findIndex para achar o index do item que queremos remover
+    - splice para remover um item da lista
+  - Usando tailwindcss
+
+### [Estrutura da composition api | Composition API Vue 3](https://www.youtube.com/watch?v=QmRbcU2OwrM)
+
+### [VueJS em 1 hora! (Teoria e prática)](https://www.youtube.com/watch?v=cSa-SMVMGsE)
+  - v-bind
+  - O v vem de vue, e o bind é para ligar um valor a um atributo do html
+
+### [Dark & Light Mode With Vue, VueUse & Tailwind CSS](https://www.youtube.com/watch?v=7_mqThfC_yM)
+### [Adding a Dark Mode to Vue in 5 Minutes](https://www.youtube.com/watch?v=cGN91TLXrC8)
+  - [Docs VueUse](https://vueuse.org/guide/)
+
+### Ideias
+  - [Tailwind CSS Headings - Flowbite](https://flowbite.com/docs/typography/headings/)
+  - Cards comments
+    - [6 Tailwind Comment Components](https://freefrontend.com/tailwind-comments/)
+    - [Tailwind CSS Comments Sections](https://pagedone.io/blocks/e-commerce/comment-list)
+    - [Tailwind CSS Comments Sections - Flowbite](https://flowbite.com/blocks/publisher/comments/)

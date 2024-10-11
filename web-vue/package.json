@@ -10,7 +10,8 @@
     "lint": "eslint . --ext ts,vue --report-unused-disable-directives --max-warnings 0",
     "lint:mysrc": "eslint ./src --max-warnings 0",
     "lint:fix": "eslint . --fix",
-    "lint:fixmysrc": "eslint src/**/*.{ts,vue} --fix"
+    "lint:fixmysrc": "eslint src/**/*.{ts,vue} --fix",
+    "server": "json-server server.json --watch --port 3333"
   },
   "overrides": {
     "vite": {
@@ -44,6 +45,7 @@
     "autoprefixer": "^10.4.20",
     "eslint": "^8.0.0",
     "globals": "^15.10.0",
+    "json-server": "^1.0.0-beta.3",
     "lint-staged": "^15.2.10",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",

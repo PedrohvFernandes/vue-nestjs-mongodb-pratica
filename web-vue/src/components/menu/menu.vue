@@ -12,6 +12,7 @@ import { Itens } from '.'
 import { DialogClose } from 'radix-vue'
 import { onMounted, onUnmounted, ref } from 'vue'
 import { Badge } from '../ui/badge'
+import { DarkModeSwitch } from '..'
 
 // Ref para controlar a abertura do modal
 const isOpen = ref(false)
@@ -30,6 +31,7 @@ function handleKeydown(event: KeyboardEvent) {
 }
 
 // Montar e desmontar o listener de teclado
+// Sempre que fazer uma req é sempre bom colocar dentro do onMounted
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown)
 })
@@ -43,7 +45,7 @@ onUnmounted(() => {
 <template>
   <Sheet v-model:open="isOpen">
     <SheetTrigger as-child class="flex lg:hidden">
-      <Button class="flex items-center gap-2">
+      <Button class="flex-1 flex items-center gap-2">
         Open Menu
         <Badge
           class="bg-foreground ring-1 ring-primary-foreground/25 hidden sm:flex lg:hidden"
@@ -61,6 +63,10 @@ onUnmounted(() => {
         <DialogClose>
           <Itens />
         </DialogClose>
+        <div class="flex flex-col justify-center text-center">
+          <SheetDescription> Switch theme </SheetDescription>
+          <DarkModeSwitch />
+        </div>
       </div>
     </SheetContent>
   </Sheet>

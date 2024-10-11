@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ButtonSecondary } from '@/components'
+import { Button } from '@/components/ui/button'
 import { ConfigRoutes } from '@/config'
 </script>
 
@@ -33,13 +33,13 @@ export default {
           Parece que você encontrou a porta para o grande nada
         </p>
         <div className="flex flex-col items-center">
-          <ButtonSecondary @click="goHome">
+          <Button @click="goHome" variant="secondary">
             Voltar para a página inicial
-          </ButtonSecondary>
+          </Button>
           <p className="my-2 text-foreground font-bold text-2xl">ou</p>
-          <ButtonSecondary @click="goBack">
+          <Button @click="goBack" variant="secondary">
             Voltar para a página anterior
-          </ButtonSecondary>
+          </Button>
         </div>
       </div>
     </div>
