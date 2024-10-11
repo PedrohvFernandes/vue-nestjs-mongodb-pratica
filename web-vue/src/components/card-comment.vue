@@ -64,7 +64,7 @@ import {
           >
         </p>
         <p class="text-sm text-muted-foreground">
-          <time pubdate datetime="2022-03-12" title="March 12th, 2022"
+          <time Update datetime="2022-03-12" title="March 12th, 2022"
             ><span class="text-blue-500 font-bold underline decoration-2"
               >Alterado:</span
             >

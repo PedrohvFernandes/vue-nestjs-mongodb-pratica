@@ -10,7 +10,7 @@ export default {
 </script> -->
 
 <template>
-  <main class="flex-1 p-4 grid sm:grid-cols-2 gap-2">
+  <main class="p-4 grid md:grid-cols-2 lg:grid-cols-3 gap-2">
     <CardComment />
     <CardComment />
     <CardComment />
