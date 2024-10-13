@@ -36,7 +36,7 @@ index-DPMisPo_.js:23 Uncaught ZodError: [
     at index-DPMisPo_.js:31:3301
 */
 const envSchema = z.object({
-  VITE_API_COMMENTS_TEST: z.string().url().nullish(), // nullish é para aceitar null e undefined
+  VITE_API_COMMENTS_TEST: z.string().url().nullish(), // nullish é para aceitar null e undefined, porque em produção não vai ter o VITE_API_COMMENTS_TEST
   VITE_API_COMMENTS_LIVE: z.string().url(),
   VITE_ENVIRONMENT: z.string(),
 })
