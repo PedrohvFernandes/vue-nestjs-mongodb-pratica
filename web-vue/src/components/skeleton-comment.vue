@@ -15,7 +15,7 @@ import { Skeleton } from './ui/skeleton'
 
     <Skeleton class="h-[20px] w-[200px] absolute top-20 left-6 rounded" />
     <Skeleton
-      class="h-[50px] w-[240px] md:w-[180px] lg:w-[280px] sm:w-[450px] absolute top-28 md:left-6 rounded"
+      class="h-[50px] w-[240px] sm:w-[280px] absolute top-28 left-6 rounded"
     />
 
     <Skeleton
