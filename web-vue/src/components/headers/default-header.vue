@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { IconCommentComponent } from '@/assets/icons'
-import { Slash } from 'lucide-vue-next'
 import { Logo } from '..'
 </script>
 

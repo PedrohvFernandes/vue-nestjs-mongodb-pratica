@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { FooterDefault, LoginHeader, LoggedHeader } from '@/components'
+import {
+  FooterDefault,
+  // LoginHeader,
+  LoggedHeader,
+} from '@/components'
 </script>
 
 <template>
