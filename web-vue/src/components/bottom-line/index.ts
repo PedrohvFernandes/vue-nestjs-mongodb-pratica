@@ -14,11 +14,18 @@ export const spanVariants = cva(
       variantBottom: {
         default: 'before:-bottom-6',
         bottom10: 'before:-bottom-10',
+        bottom12: 'before:-bottom-12',
+        bottom16: 'before:-bottom-16',
+        bottom20: 'before:-bottom-20',
+        bottom24: 'before:-bottom-24',
+        bottom28: 'before:-bottom-28',
+        bottom32: 'before:-bottom-32',
       },
       variantColorBottom: {
         default: 'before:bg-primary',
         colorBottomPrimaryForeground: 'before:bg-primary-foreground',
         colorForeground: 'before:bg-foreground',
+        colorTertiary: 'before:bg-tertiary',
       },
       variantHoverBefore: {
         default: 'before:hover:w-full',

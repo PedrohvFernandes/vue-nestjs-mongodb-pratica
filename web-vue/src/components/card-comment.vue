@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// import { CommentResponse } from '@/types'
+import { CommentResponse } from '@/types'
 
 import { Ellipsis } from 'lucide-vue-next'
 
@@ -12,21 +12,24 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
-// const props = defineProps<{ comment: CommentResponse }>()
+import { FormattedDate } from '.'
+
+const { comment, createdAt, githubUser, title, updatedAt, username } =
+  defineProps<CommentResponse>()
 </script>
 
 <template>
-  <div class="max-w-2xl p-2 drop-shadow-lg">
+  <div class="max-w-2xl p-2">
     <article
-      class="flex flex-col gap-4 p-6 mb-3 text-base bg-primary ring ring-primary-foreground/25 rounded"
+      class="flex flex-col gap-4 p-6 text-base bg-primary ring ring-primary-foreground/25 rounded drop-shadow-lg"
     >
       <header class="flex justify-between items-center mb-2">
         <div class="flex flex-col">
-          <p class="inline-flex items-center mr-3 text-sm font-semibold">
-            Bonnie Green
+          <p class="inline-flex items-center text-sm font-semibold">
+            {{ username }}
           </p>
           <p class="italic text-sm text-muted-foreground">
-            GitHub:Bonnie_sadsd
+            GitHub: {{ githubUser }}
           </p>
         </div>
         <!-- Dropdown menu -->
@@ -43,33 +46,23 @@ import {
           </DropdownMenuContent>
         </DropdownMenu>
       </header>
-      <div class="flex flex-col gap-2">
-        <h2
-          class="font-bold uppercase tracking-wider underline underline-offset-4 decoration-4"
-        >
-          Titulo do comentário
-        </h2>
+      <div class="flex flex-col gap-2 break-words">
+        <h2 class="font-bold uppercase tracking-wider">{{ title }}</h2>
 
-        <p class="text-muted-foreground">O que a pessoa comentou</p>
+        <p class="text-secondary">
+          {{ comment }}
+        </p>
       </div>
       <div
-        class="flex flex-col md:flex-row items-center md:justify-end gap-2 text-center"
+        class="flex flex-col md:flex-row justify-center md:justify-end gap-2 text-center"
       >
         <p class="text-sm text-muted-foreground">
-          <time pubdate datetime="2022-03-12" title="March 12th, 2022"
-            ><span class="text-blue-500 font-bold underline decoration-2"
-              >Criado:</span
-            >
-            Mar. 12, 2022</time
-          >
+          <span class="text-tertiary font-bold">Criado: </span>
+          <FormattedDate :date="createdAt" />
         </p>
-        <p class="text-sm text-muted-foreground">
-          <time Update datetime="2022-03-12" title="March 12th, 2022"
-            ><span class="text-blue-500 font-bold underline decoration-2"
-              >Alterado:</span
-            >
-            : Mar. 12, 2022</time
-          >
+        <p v-if="updatedAt" class="text-sm text-muted-foreground">
+          <span class="text-tertiary font-bold">Alterado: </span>
+          <FormattedDate :date="updatedAt" />
         </p>
       </div>
     </article>

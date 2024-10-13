@@ -5,7 +5,7 @@ import useGetDateFormatted from '@/utils/get-date-formatted'
 
 import { BottomLine } from '.'
 import { IconCommentComponent } from '@/assets/icons'
-import { Github } from 'lucide-vue-next'
+import { ExternalLinkIcon, Github } from 'lucide-vue-next'
 
 const { formattedCurrentYear } = useGetDateFormatted()
 </script>
@@ -29,7 +29,8 @@ const { formattedCurrentYear } = useGetDateFormatted()
           :href="ConfigBases.comments.gitHub.baseUrls.perfil"
         >
           <Github />
-          <span>Meu GitHub</span>
+          Meu GitHub
+          <ExternalLinkIcon class="size-3 sm:size-5" />
         </a>
       </BottomLine>
     </div>

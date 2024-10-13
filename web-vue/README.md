@@ -222,6 +222,9 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
 ### [VueJS em 1 hora! (Teoria e prática)](https://www.youtube.com/watch?v=cSa-SMVMGsE)
   - v-bind
   - O v vem de vue, e o bind é para ligar um valor a um atributo do html
+  - 
+
+
 
 ### [Dark & Light Mode With Vue, VueUse & Tailwind CSS](https://www.youtube.com/watch?v=7_mqThfC_yM)
 ### [Adding a Dark Mode to Vue in 5 Minutes](https://www.youtube.com/watch?v=cGN91TLXrC8)
@@ -233,3 +236,22 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
     - [6 Tailwind Comment Components](https://freefrontend.com/tailwind-comments/)
     - [Tailwind CSS Comments Sections](https://pagedone.io/blocks/e-commerce/comment-list)
     - [Tailwind CSS Comments Sections - Flowbite](https://flowbite.com/blocks/publisher/comments/)
+
+### [Pagination e tanstack query](https://www.youtube.com/watch?v=0Njxq9UcL9s)
+  - [TamsStack Query](https://tanstack.com/query/v5/docs/framework/vue/overview)
+    - [Vue Query](https://vue-query.vercel.app/#/,)
+
+### Meus projetos que me ajudaram
+  - [nlw-unite](https://github.com/PedrohvFernandes/nlw-unite/tree/main)
+    - Route Params
+    - [Fazendo um Pagination no back-end](https://github.com/PedrohvFernandes/nlw-unite/blob/main/api/src/routes/get-event-attendees.ts)
+    - [Pegando o Pagination do front e usando ele no front-end](https://github.com/PedrohvFernandes/nlw-unite/blob/main/pass-in-web/src/components/attendee-list.tsx)
+  - [cupcakes](https://github.com/PedrohvFernandes/cupcakes/blob/main)
+    - Config IsDev
+  - [controle-de-metas](https://github.com/PedrohvFernandes/controle-de-metas/tree/main)
+    - UseQuery
+  - [react-practice](https://github.com/PedrohvFernandes/react-practice/tree/main)
+    - Pagination
+    - UseQuery
+    - Route Params
+

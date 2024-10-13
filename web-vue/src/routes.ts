@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter, RouteRecordRaw } from 'vue-router'
 // https://router.vuejs.org/guide/
 import { ConfigRoutes } from './config'
-import { Comments, Home, NotFound } from './pages'
+import { Comments, Home, Login, NotFound } from './pages'
 import { DefaultLayout } from './layouts'
 
 const routes: Array<RouteRecordRaw> = [
@@ -18,6 +18,17 @@ const routes: Array<RouteRecordRaw> = [
         path: ConfigRoutes.comments.comments.path,
         name: ConfigRoutes.comments.comments.name,
         component: Comments,
+      },
+    ],
+  },
+  {
+    path: ConfigRoutes.comments.login.path,
+    component: DefaultLayout,
+    children: [
+      {
+        path: ConfigRoutes.comments.login.path,
+        name: ConfigRoutes.comments.login.name,
+        component: Login,
       },
     ],
   },

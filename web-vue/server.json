@@ -1,7 +1,22 @@
 {
   "comments": [
-    { "id": "1", "username":"Pedro Henrique Vieira Fernandes", "title":"1 post","githubUser": "pedrohvfernandes", "comment": "a comment about post 1", "created_at": "2021-06-01T00:00:00" },
-  
-    { "id": "2", "username":"João", "title":"2 post","githubUser": "joao123", "comment": "another comment about post 1", "created_at": "2021-06-01T00:00:00"}
+    { "id": "1", "username": "Alice", "title": "First Post", "githubUser": "alice123", "comment": "This is a comment about post 1", "createdAt": "2023-01-01T10:00:00" },
+    { "id": "2", "username": "Bob", "title": "Second Post", "githubUser": "bobDev", "comment": "Interesting insights on post 2", "createdAt": "2023-01-02T11:00:00" },
+    { "id": "3", "username": "Charlie", "title": "Third Post", "githubUser": "charlieX", "comment": "Loved the explanation in post 3", "createdAt": "2023-01-03T12:00:00" },
+    { "id": "4", "username": "David", "title": "Fourth Post", "githubUser": "davidCoder", "comment": "Great points raised in post 4", "createdAt": "2023-01-04T13:00:00" },
+    { "id": "5", "username": "Eve", "title": "Fifth Post", "githubUser": "eveTech", "comment": "Agree with the thoughts in post 5", "createdAt": "2023-01-05T14:00:00" },
+    { "id": "6", "username": "Frank", "title": "Sixth Post", "githubUser": "frankCode", "comment": "Interesting take on post 6", "createdAt": "2023-01-06T15:00:00" },
+    { "id": "7", "username": "Grace", "title": "Seventh Post", "githubUser": "graceDev", "comment": "Helpful info in post 7", "createdAt": "2023-01-07T16:00:00" },
+    { "id": "8", "username": "Hank", "title": "Eighth Post", "githubUser": "hankG", "comment": "Loved the detailed breakdown of post 8", "createdAt": "2023-01-08T17:00:00" },
+    { "id": "9", "username": "Ivy", "title": "Ninth Post", "githubUser": "ivyTech", "comment": "Clear and concise in post 9", "createdAt": "2023-01-09T18:00:00" },
+    { "id": "10", "username": "Jake", "title": "Tenth Post", "githubUser": "jakeDev", "comment": "Appreciated the insights in post 10", "createdAt": "2023-01-10T19:00:00" },
+
+    { "id": "11", "username": "Kate", "title": "Eleventh Post", "githubUser": "kateDev", "comment": "Good thoughts on post 11", "createdAt": "2023-01-11T20:00:00" },
+    { "id": "12", "username": "Leo", "title": "Twelfth Post", "githubUser": "leoCoder", "comment": "Enjoyed reading post 12", "createdAt": "2023-01-12T21:00:00" },
+    { "id": "13", "username": "Mia", "title": "Thirteenth Post", "githubUser": "miaDev", "comment": "Very well written post 13", "createdAt": "2023-01-13T22:00:00" },
+    { "id": "14", "username": "Nick", "title": "Fourteenth Post", "githubUser": "nickTech", "comment": "Post 14 made some great points", "createdAt": "2023-01-14T23:00:00" },
+    { "id": "15", "username": "Olivia", "title": "Fifteenth Post", "githubUser": "oliviaCoder", "comment": "Good read on post 15", "createdAt": "2023-01-15T00:00:00" },
+
+    { "id": "250", "username": "Zane", "title": "Two Hundred and Fiftieth Post", "githubUser": "zaneDev", "comment": "Final comment on post 250", "createdAt": "2023-09-07T14:00:00" }
   ]
 }

@@ -13,6 +13,7 @@ import { DialogClose } from 'radix-vue'
 import { onMounted, onUnmounted, ref } from 'vue'
 import { Badge } from '../ui/badge'
 import { DarkModeSwitch } from '..'
+import { AlignJustify } from 'lucide-vue-next'
 
 // Ref para controlar a abertura do modal
 const isOpen = ref(false)
@@ -46,7 +47,8 @@ onUnmounted(() => {
   <Sheet v-model:open="isOpen">
     <SheetTrigger as-child class="flex lg:hidden">
       <Button class="flex-1 flex items-center gap-2">
-        Open Menu
+        <p class="hidden sm:flex">Open Menu</p>
+        <p><AlignJustify class="sm:hidden" /></p>
         <Badge
           class="bg-foreground ring-1 ring-primary-foreground/25 hidden sm:flex lg:hidden"
         >
