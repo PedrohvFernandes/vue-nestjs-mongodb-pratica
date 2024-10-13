@@ -265,11 +265,11 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
   ```
   - [Solução](https://stackoverflow.com/questions/71552229/vite-how-do-i-use-a-wildcard-in-rollupjs-build-rollupoptions-external)
   No arquivo do vite.config.ts:
-  ```json
-    "build": {
-      "rollupOptions": {
-        "external": [
-          "dayjs/locale/*"
+  ```ts
+    build: {
+      rollupOptions: {
+        external: [
+          'dayjs/locale/*' ou 'dayjs/locale/pt-BR'
         ]
       }
     }
