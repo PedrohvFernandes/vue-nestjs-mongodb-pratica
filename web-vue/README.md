@@ -274,3 +274,5 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
       }
     }
   ```
+
+  ### [Outras pesquisas que eu fiz](https://chatgpt.com/c/6707658f-ed84-8010-a130-8d288c50d513)
