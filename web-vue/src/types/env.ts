@@ -1,5 +1,40 @@
 import z from 'zod'
 
+// Não esquecer de passar as envs para o .env e production, se não vai dar esse erro:
+/*
+index-DPMisPo_.js:23 Uncaught ZodError: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "VITE_API_COMMENTS_TEST"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "VITE_API_COMMENTS_LIVE"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "VITE_ENVIRONMENT"
+    ],
+    "message": "Required"
+  }
+]
+    at get error (index-DPMisPo_.js:23:83575)
+    at dt.parse (index-DPMisPo_.js:23:85812)
+    at index-DPMisPo_.js:31:3301
+*/
 const envSchema = z.object({
   VITE_API_COMMENTS_TEST: z.string().url(),
   VITE_API_COMMENTS_LIVE: z.string().url(),
