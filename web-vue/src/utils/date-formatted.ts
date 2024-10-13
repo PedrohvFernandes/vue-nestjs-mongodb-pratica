@@ -1,5 +1,5 @@
-import dayjs from 'dayjs'
-import 'dayjs/locale/pt-br'
+import dayjs from 'dayjs/esm'
+import 'dayjs/esm/locale/pt-br'
 
 dayjs.locale('pt-BR')
 
