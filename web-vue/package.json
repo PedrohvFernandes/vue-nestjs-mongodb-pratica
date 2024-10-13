@@ -13,11 +13,6 @@
     "lint:fixmysrc": "eslint src/**/*.{ts,vue} --fix",
     "server": "json-server server.json --watch --port 3333"
   },
-  "overrides": {
-    "vite": {
-      "rollup": "npm:@rollup/wasm-node"
-    }
-  },
   "dependencies": {
     "@radix-icons/vue": "^1.0.0",
     "@tanstack/vue-query": "^5.59.10",
