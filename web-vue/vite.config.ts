@@ -34,7 +34,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: ['node:*'],
+      external: ['dayjs/locale/*'],
     },
   },
   server: {
