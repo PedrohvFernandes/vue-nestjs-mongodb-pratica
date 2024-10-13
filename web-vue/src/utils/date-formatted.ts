@@ -1,3 +1,4 @@
+// https://github.com/iamkun/dayjs/issues/1242
 import dayjs from 'dayjs/esm'
 import 'dayjs/esm/locale/pt-br'
 

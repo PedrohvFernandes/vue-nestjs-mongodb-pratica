@@ -193,9 +193,9 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
   Solução:
   ```json
     "overrides": {
-    "vite": {
-      "rollup": "npm:@rollup/wasm-node"
-    }
+      "vite": {
+        "rollup": "npm:@rollup/wasm-node"
+      }
   },
   ```
   Mais soluções:
@@ -273,6 +273,19 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
         ]
       }
     }
+  ```
+
+  Depois mude os imports do dayjs:
+  ```ts
+    import dayjs from 'dayjs'
+    import 'dayjs/locale/pt-BR'
+  ```
+
+  para
+
+  ```ts
+    import dayjs from 'dayjs/esm'
+    import 'dayjs/esm/locale/pt-br'
   ```
 
   ### [Outras pesquisas que eu fiz](https://chatgpt.com/c/6707658f-ed84-8010-a130-8d288c50d513)
