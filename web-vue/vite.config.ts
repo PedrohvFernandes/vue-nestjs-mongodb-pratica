@@ -32,6 +32,11 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    rollupOptions: {
+      external: ['dayjs/locale/pt-BR'],
+    },
+  },
   server: {
     port: 3000,
   },
