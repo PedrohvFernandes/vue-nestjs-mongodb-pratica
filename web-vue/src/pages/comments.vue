@@ -56,6 +56,7 @@ export default {
       </template>
 
       <template v-if="commentsResponse">
+        <!-- v-for="(comment, index) in commentsResponse.data" -->
         <CardComment
           v-for="comment in commentsResponse.data"
           :comment="comment.comment"

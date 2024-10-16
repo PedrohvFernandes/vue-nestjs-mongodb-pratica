@@ -48,6 +48,8 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
 }
 ```
 
+### Extensão no google chrome: [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
+
 ## Alguns videos/docs que me ajudaram
 
 - [Vue 3 + TypeScript + Vite](https://vite.dev/guide/)
@@ -182,6 +184,8 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
       "utils": "@/lib/utils"
      }
     ```
+## Links que me ajudaram
+
   ### [Sistema de rotas Vue](https://chatgpt.com/c/670581be-0058-8010-a5b0-a8e523a0a9c6)
 
   ### [Vue 3 Props e Defaults](https://chatgpt.com/c/6705dcc5-4ddc-8010-8120-30d668d1dfcf)
@@ -221,18 +225,51 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
 
 ### [VueJS em 1 hora! (Teoria e prática)](https://www.youtube.com/watch?v=cSa-SMVMGsE)
   - O v vem de vue, e o bind é para ligar um valor a um atributo do html
+  - Propriedade data, que é uma função que retorna um objeto, e esse objeto é o que vai ser renderizado na tela
   - template
   - interpolacao
   - diretivas
     - v-for
     - v-bind
-    - v-if
+    - v-if e v-else
     - v-on
+    - v-bind --> é uma diretiva para fazer ligação de dados com o template
+    - v-bind:key --> Para o v-for, para o vue saber qual item ele tem que renderizar, qual item mudou dentro dessa lista, se removeu, modificou, ou adicionou novo item... Tipo no .map no react.
     - diretiva:nomeDoEvento(argumento).modificador, ex: v-on:click.prevent --> Esse prevent é para previnir o comportamento padrão do html, o famoso preventDefault
   - data binding --> Two way data binding --> Mão dupla
     - v-model --> Para fazer o two way data binding, ele liga o valor do input com o valor da variavel, refletindo nom meu model
   - Uma maneira diferente de dar preventDefault no vue, é usar o .prevent no evento
-  - computed properties --> Propriedades computadas
+  - computed properties --> Propriedades computadas --> Essa propriedade/função, disponibiliza variaveis, valores para serem renderizados no template. propriedade da tag script: 
+  ```js
+    computed:{
+      cria uma propriedade/função computada
+    } 
+  ```
+  ou função `const isFirstPage = computed(() => refPagination.page <= 1)` --> Essa função vai ser chamada toda vez que o valor de refPagination.page mudar, e ela vai retornar true ou false, dependendo do valor de refPagination.page
+  - Ex: Em um sistema de comentario, onde o usuario preenche seu nome no momento que esta escrevendo o comentario, caso ele não escreva eu quero que apareça "Anônimo" no lugar do nome dele. Então eu posso usar uma computed property para fazer isso, e ela vai ficar observando o valor do nome do usuario, e caso ele não escreva nada, ela vai retornar "Anônimo", mas no banco de dados vai ser salvo como null, ou seja, o valor do nome do usuario vai ser null, mas na tela vai aparecer "Anônimo"
+  - Outra propriedade/função de reatividade é o watch, que é para observar uma variavel e fazer algo quando ela mudar. Ela monitora uma variavel e executa uma função toda vez que essa variavel mudar.
+    - Ex: `watch(() => refPagination.page, (newPage, oldPage) => {console.log(newPage, oldPage)})` --> Essa função vai ser chamada toda vez que o valor de refPagination.page mudar, e ela vai retornar o novo valor e o valor antigo. Ou tu pode passar assim como propriedade da tag script:
+    ```js
+      watch: {
+        <!-- 
+        
+          Basicamente é assim que se usa o watch, você passa uma variavel que vai ser observada, ela vira uma função, ou seja, se eu tenho uma variavel que se chama `comments`, então eu passo pro watch `comments(val)` e a propriedade dentro `val` captura a mudança, e toda vez que essa variavel mudar, a função vai ser chamada. E essa função vai receber o novo valor e o valor antigo da variavel que esta sendo observada.
+        -->
+        nomeDaVariavelQueVaiSerObservada(val){ 
+          console.log('Mudou', val)
+        }
+      }
+    ```
+  - Single file components --> SFC --> É um arquivo que contem o template, script e style, tudo em um arquivo só, tipo react que tem o jsx, o css e o js tudo em um arquivo só
+  - Redux ou Vuex --> É um gerenciador de estado global, que serve para compartilhar dados entre componentes, e ele é muito usado em aplicações grandes, onde tem muitos componentes que precisam compartilhar dados entre si. Tipo o contexto do react, mas o vuex é mais poderoso, ele é mais parecido com o redux do react. Tem o vue router para gerenciar as rotas, e o vuex para gerenciar o estado global da aplicação.
+    - O Vue Router é uma biblioteca para roteamento e o Vuex é uma ferramenta para gerenciamento de estado centralizado no Vue.js:
+    - Vue Router
+      - É a biblioteca oficialmente suportada para a maioria das Single Page Applications (SPAs). O Vue Router permite adicionar e proteger rotas, e oferece recursos como navegação via código, parâmetros de rotas, redirecionamento, entre outros.
+    - Vuex
+      - É uma ferramenta para gerenciamento de estado centralizado, que permite fazer o gerenciamento de estado de forma centralizada.     
+    O Vue.js é um framework que oferece bibliotecas principais e suporte para a construção de SPAs. A Vue 3 é a versão principal mais recente do Vue.
+    - [Vue Newbie: What is the diff between Vue Router and Vuex? Is Vuex better? When to use Vue Router and Vuex? Should I use both?](https://www.reddit.com/r/vuejs/comments/l18ss8/vue_newbie_what_is_the_diff_between_vue_router/)
+  - Emit(min 47) --> É um evento personalizado, que é emitido por um componente filho, e capturado por um componente pai. É tipo o evento do react, que é emitido por um componente filho e capturado por um componente pai. Ele é usado para passar dados de um componente filho para um componente pai. Ex: dentro do componente filho: `this.$emit('nomeDoEvento', {dados que eu quero passar para o pai})` --> Esse evento é capturado pelo componente pai, e ele pode pegar os dados que foram passados pelo evento, e fazer o que ele quiser com esses dados, por exemplo dentro do forms, v-on:nomeDoEvento="metodo" --> esse metodo do pai vai ser passado para o filho, atraves do evento que o filho emitiu, e o pai vai poder pegar os dados que o filho passou, e fazer o que ele quiser com esses dados. E toda vez que esse evento for chamada, o metodo do pai vai ser chamado, e ele vai receber os dados que o filho passou.
 
 ### [Dark & Light Mode With Vue, VueUse & Tailwind CSS](https://www.youtube.com/watch?v=7_mqThfC_yM)
 ### [Adding a Dark Mode to Vue in 5 Minutes](https://www.youtube.com/watch?v=cGN91TLXrC8)

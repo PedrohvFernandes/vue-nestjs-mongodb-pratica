@@ -70,7 +70,7 @@ const refPagination = reactive<PaginationProps>({
 const router = useRouter()
 const route = useRoute()
 
-// Cálculos para controle da paginação. O computed é uma função que retorna um valor. Sempre que uma das dependências mudar, o valor do computed é recalculado.
+// Cálculos para controle da paginação. O computed é uma função que retorna um valor. Sempre que uma das dependências mudar, o valor do computed é recalculado e atualizado na tela, em vez de fazer logicas no template
 // const isFirstPage = computed(() => refPage.value <= 1)
 // const isLastPage = computed(() => refPage.value >= pages)
 const isFirstPage = computed(() => refPagination.page <= 1)
