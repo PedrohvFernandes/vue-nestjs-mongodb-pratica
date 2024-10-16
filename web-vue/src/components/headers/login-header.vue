@@ -5,11 +5,11 @@ import { ItensLogin, Menu } from '../menu'
 
 <template>
   <DefaultHeader>
-    <nav class="flex items-center justify-center gap-2">
+    <template #itens-menu>
       <ItensLogin class="hidden lg:flex" />
       <Menu>
         <ItensLogin />
       </Menu>
-    </nav>
+    </template>
   </DefaultHeader>
 </template>

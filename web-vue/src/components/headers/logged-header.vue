@@ -5,12 +5,12 @@ import { Menu, ItensLogged } from '@/components/menu'
 
 <template>
   <DefaultHeader>
-    <nav class="flex items-center justify-center gap-2">
+    <template #itens-menu>
       <ItensLogged class="hidden lg:flex" />
       <Menu>
         <ItensLogged />
       </Menu>
-    </nav>
+    </template>
     <p class="text-xs sm:text-sm md:text-md lg:text-lg">
       Olá <span class="font-bold">Usuário</span>!
     </p>
