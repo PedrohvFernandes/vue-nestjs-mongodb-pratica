@@ -1,3 +1,23 @@
-#!/bin/sh
+# Custom script for lint-staged
+
+# Run lint-staged in web-vue
 cd web-vue
 npx lint-staged
+if [ $? -ne 0 ]; then
+  echo "Erro no lint do frontend"
+  exit 1
+fi
+
+# Return to root
+cd ..
+
+# Run lint-staged in api-nestjs
+cd api-nestjs
+npx lint-staged
+if [ $? -ne 0 ]; then
+  echo "Erro no lint do backend"
+  exit 1
+fi
+
+# Return to root
+cd ..
