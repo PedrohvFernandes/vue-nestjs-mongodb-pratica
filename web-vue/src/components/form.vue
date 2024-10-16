@@ -55,7 +55,6 @@ const { handleSubmit, resetForm } = useForm({
 })
 
 const handleCreateComment = handleSubmit((values) => {
-  console.log('Form submitted!', values)
   toast({
     title: `Comentário com o titulo ${values.title}`,
     description: 'Seu comentário foi enviado com sucesso!',

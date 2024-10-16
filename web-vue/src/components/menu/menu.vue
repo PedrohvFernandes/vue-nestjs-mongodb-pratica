@@ -8,7 +8,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
-import { Itens } from '.'
 import { DialogClose } from 'radix-vue'
 import { onMounted, onUnmounted, ref } from 'vue'
 import { Badge } from '../ui/badge'
@@ -63,7 +62,7 @@ onUnmounted(() => {
           <SheetDescription> Application Options </SheetDescription>
         </SheetHeader>
         <DialogClose>
-          <Itens />
+          <slot />
         </DialogClose>
         <div class="flex flex-col justify-center text-center">
           <SheetDescription> Switch theme </SheetDescription>

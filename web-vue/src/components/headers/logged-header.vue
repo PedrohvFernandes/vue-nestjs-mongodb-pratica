@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { Itens, Menu } from '@/components/menu'
-import { DarkModeSwitch } from '@/components'
 import { DefaultHeader } from '.'
+import { Menu, ItensLogged } from '@/components/menu'
 </script>
 
 <template>
   <DefaultHeader>
     <nav class="flex items-center justify-center gap-2">
-      <Itens class="hidden lg:flex" />
-      <Menu />
-      <DarkModeSwitch class="hidden lg:flex" />
+      <ItensLogged class="hidden lg:flex" />
+      <Menu>
+        <ItensLogged />
+      </Menu>
     </nav>
     <p class="text-xs sm:text-sm md:text-md lg:text-lg">
       Olá <span class="font-bold">Usuário</span>!

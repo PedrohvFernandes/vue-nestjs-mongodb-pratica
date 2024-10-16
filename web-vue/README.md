@@ -220,11 +220,19 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
 ### [Estrutura da composition api | Composition API Vue 3](https://www.youtube.com/watch?v=QmRbcU2OwrM)
 
 ### [VueJS em 1 hora! (Teoria e prática)](https://www.youtube.com/watch?v=cSa-SMVMGsE)
-  - v-bind
   - O v vem de vue, e o bind é para ligar um valor a um atributo do html
-  - 
-
-
+  - template
+  - interpolacao
+  - diretivas
+    - v-for
+    - v-bind
+    - v-if
+    - v-on
+    - diretiva:nomeDoEvento(argumento).modificador, ex: v-on:click.prevent --> Esse prevent é para previnir o comportamento padrão do html, o famoso preventDefault
+  - data binding --> Two way data binding --> Mão dupla
+    - v-model --> Para fazer o two way data binding, ele liga o valor do input com o valor da variavel, refletindo nom meu model
+  - Uma maneira diferente de dar preventDefault no vue, é usar o .prevent no evento
+  - computed properties --> Propriedades computadas
 
 ### [Dark & Light Mode With Vue, VueUse & Tailwind CSS](https://www.youtube.com/watch?v=7_mqThfC_yM)
 ### [Adding a Dark Mode to Vue in 5 Minutes](https://www.youtube.com/watch?v=cGN91TLXrC8)

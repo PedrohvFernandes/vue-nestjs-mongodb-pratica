@@ -19,7 +19,7 @@ const { comment, createdAt, githubUser, title, updatedAt, username } =
 </script>
 
 <template>
-  <div class="max-w-2xl p-2">
+  <div class="w-full max-w-2xl p-2">
     <article
       class="flex flex-col gap-4 p-6 text-base bg-primary ring ring-primary-foreground/25 rounded drop-shadow-lg"
     >
@@ -47,9 +47,13 @@ const { comment, createdAt, githubUser, title, updatedAt, username } =
         </DropdownMenu>
       </header>
       <div class="flex flex-col gap-2 break-words">
-        <h2 class="font-bold uppercase tracking-wider">{{ title }}</h2>
+        <h2 class="text-sm sm:text-base font-bold uppercase tracking-wider">
+          {{ title }}
+        </h2>
 
-        <p class="text-secondary">
+        <p
+          class="h-full max-h-32 text-secondary overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-primary-foreground [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-foreground"
+        >
           {{ comment }}
         </p>
       </div>
