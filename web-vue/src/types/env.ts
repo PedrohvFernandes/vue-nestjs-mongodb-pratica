@@ -1,6 +1,6 @@
 import z from 'zod'
 
-// Não esquecer de passar as envs para o .env e production, se não vai dar esse erro:
+// Não esquecer de passar as envs para o .env e production, se não vai dar esse erro: tanto developer quanto production
 /*
 index-DPMisPo_.js:23 Uncaught ZodError: [
   {
