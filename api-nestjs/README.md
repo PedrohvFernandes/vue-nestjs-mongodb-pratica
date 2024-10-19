@@ -1,9 +1,25 @@
-# NestJs + TypeScript + PrismaOrm + MongoDB
+# NestJs + TypeScript + PrismaOrm + MongoDB - Um framework totalmente verboso, opinativo, modular
 
 ## Alguns videos/docs que me ajudaram
 
 - [Docs NestJs](https://docs.nestjs.com/first-steps)
 - [NestJS em 15 minutos, direto ao ponto!](https://www.youtube.com/watch?v=MDkpX6jBCEo)
+
+### Envs
+  -[Configurações e Variáveis de Ambiente .env com NestJS #nodejs #javascript #typescript #backend](https://www.youtube.com/watch?v=U0F4_NEkZ3k)
+    - Aqui usamos a lib: ```npm i @nestjs/config```
+      - Junto com ela usamos a lib: ```npm i joi```  para fazer a validação das envs, tipo o zod
+      - Para tipar as envs, criamos um arquivo de config
+    - Fazemos um arquivo de config
+    - Tipamos as envs
+       - Tipo no node normal: [Lendo e validando variáveis ambiente no JavaScript](https://www.youtube.com/watch?v=n6u1eTrHxfs) ou no projeto front-end aqui desse repo
+    - [Docs configuration](https://docs.nestjs.com/techniques/configuration)
+    - Comandos do nest:
+      - ```nest g module nomeDoModule``` para criar um module, ele já coloca o modulo nomeDoModule.module.ts no app.module.ts
+  -[Setting Up Environment Variables and Configurations in NestJS](https://bhargavacharyb.medium.com/setting-up-environment-variables-and-configurations-in-nestjs-a6372fb81f31)
+    - Aqui usamos a lib: ```npm install --save dotenv```
+      - Importamos no main.ts e com isso toda a aplicação tem acesso as variáveis de ambiente
+
 
 ## Sequencia de instalação
 
