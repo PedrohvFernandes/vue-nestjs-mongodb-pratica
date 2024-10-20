@@ -1,16 +1,46 @@
-# Depois que colocar essa config de um docker compose up -d no terminal onde tem o arquivo docker-compose.yml para subir o container do postgres(Se estiver usando o windows e você desativou o serviço do docker, abra o app novamente para ligar, se não fizer isso vai dar o erro: error during connect: this error may indicate that the docker daemon is not running)
-name: pocket-js-server
+#  docker compose up -d --> De esse comando para subir o container
+name: comments-nestjs
 
-# Containers
+# Ta dando errado o da bitnami
+# services:
+#   mongodb:
+#   # https://hub.docker.com/r/bitnami/mongodb --> Documentação do container
+#   # https://www.mongodb.com/pt-br/docs/manual/tutorial/install-mongodb-community-with-docker/
+#   # https://hub.docker.com/r/bitnami/postgresql
+#   # https://www.prisma.io/dataguide/mongodb/connection-uris
+#     image: bitnami/mongodb:8.0.1
+#     ports:
+#       - "5432:27017" # Porta correta do MongoDB: 27017, mudamos ela para 5432, mas podiamos deixar 27017:27017
+#     environment:
+#       # - MONGODB_ROOT_USER=docker
+#       # - MONGODB_ROOT_PASSWORD=docker
+#       # - MONGODB_DATABASE=comments
+#       - MONGODB_ROOT_USER=${MONGODB_ROOT_USER}
+#       - MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}
+#       - MONGODB_DATABASE=${MONGODB_DATABASE}
+#     volumes:
+#       - comments_mongodb_data:/bitnami/mongodb
+
+# # O volumes é uma forma de persistir os dados do container em um diretório do host
+# volumes:
+#   comments_mongodb_data:
+
 services:
-  pg:
-  # É legal fixarmos a versão, para evitar problemas de compatibilidade
-    image: bitnami/postgresql:13.16.0
+  mongodb:
+    build: ./docker/mongodb_rs
+    restart: always
     ports:
-    # Um redirecionamento de portas é feito para que possamos acessar o banco de dados. Eu pego a porta do container, ou seja, do PG e redireciono para a porta do host, ou seja, da máquina que estou utilizando. Isso me permite acessar o banco de dados de fora do container.
-      - "5432:5432"
+      - "5432:27017"
     environment:
-      - POSTGRES_USER=docker
-      - POSTGRES_PASSWORD=docker
-      # Nome do BD
-      - POSTGRES_DB=inorbit
+      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_ROOT_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGODB_DATABASE}
+      MONGO_REPLICA_HOST: localhost
+      MONGO_REPLICA_PORT: "27017"
+      MONGO_COMMAND: 'mongosh'
+    volumes:
+      - comments_mongodb_data:/data/db
+
+# O volumes é uma forma de persistir os dados do container em um diretório do host
+volumes:
+  comments_mongodb_data:

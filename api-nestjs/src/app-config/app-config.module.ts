@@ -24,7 +24,6 @@ import { ConfigModule } from '@nestjs/config'
       isGlobal: true,
       // Definimos o schema de validação das variáveis de ambiente
       validationSchema: joi.object({
-        DATABASE_URL: joi.string().required(),
         STAR_WARS_API_URL: joi.string().required()
       })
     })

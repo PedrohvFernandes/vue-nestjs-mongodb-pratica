@@ -12,3 +12,28 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  // Se você usa o @db.ObjectId, logo tem que usar o auto(), e se usa o auto() tem que usar o @db.ObjectId. Se você usar @db.ObjectId e usar o uuid() ele vai dar error na hora de inserir  alguma informação no banco de dados: Inconsistent column data: Malformed ObjectID: invalid character '-' was found at index 8 in the provided hex string: "6c8398e3-a2b8-449a-ba0f-c98f43106d10" for the field 'id'.
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  username   String
+  githubUser String
+  comments   Comment[]
+
+  @@map("users")
+}
+
+model Comment {
+  // Se não usa @db.ObjectId, você pode usar o uuid
+  // id        String    @id @default(uuid()) @map("_id")
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  comment   String
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime?
+
+  userId String @map("user_id") @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("comments")
+}

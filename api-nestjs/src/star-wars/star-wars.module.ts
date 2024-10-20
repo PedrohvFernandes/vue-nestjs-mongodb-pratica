@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
 import { StarWarsController } from './star-wars.controller'
-import { AppConfigModule } from '@/app-config/app-config.module'
+import { AppConfigModule } from 'prisma/src/app-config/app-config.module'
 // import { ConfigModule } from '@nestjs/config'
 
 @Module({
