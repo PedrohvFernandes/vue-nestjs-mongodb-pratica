@@ -3,6 +3,7 @@ import { Content } from '@application/entities/content'
 import { Title } from '@application/entities/title'
 import { CommentRepository } from '@application/repositories/comments-repository'
 import { Injectable } from '@nestjs/common'
+import { ErrorCreateComment } from '../errors/error-create-comment'
 
 interface CreateCommentRequest {
   // comment: Comment
@@ -29,7 +30,11 @@ export class CreateComment {
       title: new Title(title)
     })
 
-    await this.commentRepository.create(comment)
+    const commentCreated = await this.commentRepository.create(comment)
+
+    if (!commentCreated) {
+      throw new ErrorCreateComment()
+    }
 
     return {
       comment

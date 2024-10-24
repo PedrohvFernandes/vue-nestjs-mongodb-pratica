@@ -73,6 +73,7 @@
 - [z.string() validates empty strings](https://github.com/colinhacks/zod/issues/2466)
 - [Replace](https://stackoverflow.com/questions/41285211/overriding-interface-property-type-defined-in-typescript-d-ts-file)
 - [ObjectId](https://www.mongodb.com/pt-br/docs/manual/reference/method/ObjectId/)
+- [Controllers](https://docs.nestjs.com/controllers)
 
 - [Não há suporte para Prisma Migrate](https://www.prisma.io/docs/orm/overview/databases/mongodb#no-support-for-prisma-migrate)
   - npx prisma migrate dev --name init

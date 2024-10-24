@@ -8,6 +8,7 @@ export class InMemoryCommentRepository implements CommentRepository {
   public comments: Comment[] = []
   async create(comment: Comment) {
     this.comments.push(comment)
+    return comment
   }
 
   async update(comment: Comment) {
@@ -39,6 +40,7 @@ export class InMemoryCommentRepository implements CommentRepository {
       user: User
     }[]
     total: number
+    totalPerPage: number
   }> {
     // const comments = this.comments.slice((page - 1) * perPage, page * perPage)
 
@@ -49,14 +51,26 @@ export class InMemoryCommentRepository implements CommentRepository {
     // Se o page for 1, o endIndex é 1 * 16 = 16. Se for 2, é 2 * 16 = 32. Então o endIndex é 16.
     const endIndex = page * perPage
     // Com isso fazemos um slice do array de comentários, pegando do startIndex até o endIndex. De quanto até quanto queremos pegar.
+    const comments = this.comments.slice(startIndex, endIndex)
     return {
-      comments: this.comments.slice(startIndex, endIndex).map((comment) => {
+      comments: comments.map((comment) => {
         return {
           comment,
           user: makeUser()
         }
       }),
-      total: this.comments.length
+      total: this.comments.length,
+      totalPerPage: comments.length
+    }
+  }
+
+  async delete(commentId: string): Promise<void> {
+    const commentIndex = this.comments.findIndex(
+      (item) => item.id === commentId
+    )
+
+    if (commentIndex >= 0) {
+      this.comments.splice(commentIndex, 1)
     }
   }
 }

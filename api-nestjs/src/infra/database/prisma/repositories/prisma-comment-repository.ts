@@ -11,32 +11,41 @@ export class PrismaCommentRepository implements CommentRepository {
   // eslint-disable-next-line no-useless-constructor
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(comment: Comment): Promise<void> {
+  async create(comment: Comment): Promise<Comment> {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        id: comment.userId
+      }
+    })
+
+    if (!user) {
+      return
+    }
+
     const raw = PrismaCommentMapper.toPrisma(comment)
 
-    await this.prisma.comment.create({
+    const commentCreated = await this.prisma.comment.create({
       data: raw
     })
+
+    if (!commentCreated) {
+      return
+    }
+
+    return PrismaCommentMapper.toDomain(commentCreated)
   }
 
   async update(comment: Comment): Promise<void> {
     const raw = PrismaCommentMapper.toPrisma(comment)
 
-    const commentUpdate = await this.prisma.comment.findUnique({
-      where: {
-        id: comment.id
-      }
-    })
-
     await this.prisma.comment.update({
       where: {
-        id: commentUpdate.id
+        id: comment.id
       },
       data: {
-        ...raw, // Pegamos todos os campos do objeto raw, o que já tinha: Id, createdAt, etc
-        title: raw.title ?? commentUpdate.title, // Se o title for nulo, mantemos o que já tinha
-        content: raw.content ?? commentUpdate.content, // Se o content for nulo, mantemos o que já tinha
-        updatedAt: new Date() // Atualizamos a data de atualização
+        title: raw.title,
+        content: raw.content,
+        updatedAt: raw.updatedAt
       }
     })
   }
@@ -47,6 +56,10 @@ export class PrismaCommentRepository implements CommentRepository {
         id: commentId
       }
     })
+
+    if (!comment) {
+      return
+    }
 
     return PrismaCommentMapper.toDomain(comment)
   }
@@ -60,7 +73,12 @@ export class PrismaCommentRepository implements CommentRepository {
       user: User
     }[]
     total: number
+    totalPerPage: number
   }> {
+    const total = await this.prisma.comment.count() // Total de comentários no banco
+
+    const offset = (page - 1) * perPage
+
     const comments = await this.prisma.comment.findMany({
       select: {
         id: true,
@@ -78,9 +96,8 @@ export class PrismaCommentRepository implements CommentRepository {
         }
       },
       // Criando sistema de paginação, para retornar por exemplo de 10 registro por pargina
-      take: page * perPage,
-      // Quantos registros eu vou pular, de quanto em quanto(10 em 10 por exemplo), se eu tenho uma lista de 20 registros(participantes) e quero retornar os ultimos 10, eu vou pular os 10 primeiros. Ex: 20/10 = 2, 2 * 10 = 20, então eu pulei os 10 primeiros registros. Logo o pageIndex precisa ser 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12... para eu conseguir pegar todos os registros. Então o pageIndex multiplica por 10 para pular os registros, se ele for 3 pegamos os registros de 30 a 40. 0 * 10 = 0, logo não pulamos nenhum registro, 1 * 10 = 10, logo pulamos 10 registros, 2 * 10 = 20, logo pulamos 20 registros...
-      skip: page * perPage,
+      take: perPage,
+      skip: offset, // Pula os registros, ex: se eu quero pegar os registros de 16 em 16(perPage), eu pego o page - 1 * perPage, se o usuario manda 1 no page ou 0, eu pego 0 * 16 = 0, ou seja não pulada nada, me envia os 16 primeiros, se ele manda 2, eu pego 1 * 16 = 16, pula 16 primeiros, se ele manda 3, eu pego 2 * 16 = 32 pula os 16 da segunda fileira...
       orderBy: {
         createdAt: 'desc'
       }
@@ -90,7 +107,16 @@ export class PrismaCommentRepository implements CommentRepository {
         comment: PrismaCommentMapper.toDomain(comment),
         user: PrismaUserMapper.toDomain(comment.user)
       })),
-      total: comments.length
+      total,
+      totalPerPage: comments.length
     }
+  }
+
+  async delete(commentId: string): Promise<void> {
+    await this.prisma.comment.delete({
+      where: {
+        id: commentId
+      }
+    })
   }
 }

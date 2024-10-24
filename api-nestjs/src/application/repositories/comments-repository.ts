@@ -2,7 +2,7 @@ import { Comment } from '@application/entities/comment'
 import { User } from '../entities/user'
 
 export abstract class CommentRepository {
-  abstract create(comment: Comment): Promise<void>
+  abstract create(comment: Comment): Promise<Comment>
   abstract update(comment: Comment): Promise<void>
   abstract findById(commentId: string): Promise<Comment | null>
   abstract findAll(
@@ -14,5 +14,8 @@ export abstract class CommentRepository {
       user: User
     }[]
     total: number
+    totalPerPage: number
   }>
+
+  abstract delete(commentId: string): Promise<void>
 }

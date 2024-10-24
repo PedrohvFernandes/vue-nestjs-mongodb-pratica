@@ -39,8 +39,8 @@ export class UpdateComment {
     const updatedComment = new Comment(
       {
         ...comment.propsComment, // Pegamos todas as propriedades do comentário que estamos querendo atualizar e passamos para o novo comentário
-        content: new Content(request.content),
-        title: new Title(request.title),
+        content: new Content(request.content ?? comment.content.value), // Se o content for nulo, mantemos o que já tinha
+        title: new Title(request.title ?? comment.title.value),
         updatedAt: new Date()
       },
       comment.id

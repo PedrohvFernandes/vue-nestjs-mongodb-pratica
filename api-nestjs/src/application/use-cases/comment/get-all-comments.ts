@@ -14,6 +14,7 @@ interface CommentResponseProps {
     user: User
   }[]
   total: number
+  totalPerPage: number
 }
 
 @Injectable()
@@ -25,6 +26,10 @@ export class GetAllComments {
     const { page, perPage } = request
 
     const comments = await this.commentRepository.findAll(page, perPage)
-    return { comments: comments.comments, total: comments.total }
+    return {
+      comments: comments.comments,
+      total: comments.total,
+      totalPerPage: comments.totalPerPage
+    }
   }
 }

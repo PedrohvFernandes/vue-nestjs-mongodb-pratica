@@ -8,6 +8,7 @@ export async function seed() {
 
   // Clear existing users and create a new user
   await prisma.user.deleteMany()
+  await prisma.comment.deleteMany()
 
   await prisma.user.create({
     data: {
