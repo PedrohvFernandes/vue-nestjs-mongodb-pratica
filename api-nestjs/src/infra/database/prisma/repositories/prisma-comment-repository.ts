@@ -4,6 +4,7 @@ import { PrismaCommentMapper } from '../mappers/prisma-comment-mapper'
 import { Injectable } from '@nestjs/common'
 import { PrismaService } from '../prisma.service'
 import { User } from '@src/application/entities/user'
+import { PrismaUserMapper } from '../mappers/prisma-user-mapper'
 
 @Injectable()
 export class PrismaCommentRepository implements CommentRepository {
@@ -71,7 +72,8 @@ export class PrismaCommentRepository implements CommentRepository {
         user: {
           select: {
             githubUser: true,
-            username: true
+            username: true,
+            id: true
           }
         }
       },
@@ -86,10 +88,7 @@ export class PrismaCommentRepository implements CommentRepository {
     return {
       comments: comments.map((comment) => ({
         comment: PrismaCommentMapper.toDomain(comment),
-        user: new User({
-          githubUser: comment.user.githubUser,
-          username: comment.user.username
-        })
+        user: PrismaUserMapper.toDomain(comment.user)
       })),
       total: comments.length
     }
