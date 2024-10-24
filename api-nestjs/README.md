@@ -4,7 +4,9 @@
 
 - [Docs NestJs](https://docs.nestjs.com/first-steps)
 - [NestJS em 15 minutos, direto ao ponto!](https://www.youtube.com/watch?v=MDkpX6jBCEo)
-
+- [Pipes](https://docs.nestjs.com/pipes)
+  - [Validation](https://docs.nestjs.com/techniques/validation)
+  - ```npm i class-validator class-transformer``` para fazer a validação dos dados 
 ### Envs no nestJs
   -[Configurações e Variáveis de Ambiente .env com NestJS #nodejs #javascript #typescript #backend](https://www.youtube.com/watch?v=U0F4_NEkZ3k)
     - Aqui usamos a lib: ```npm i @nestjs/config```
@@ -68,6 +70,9 @@
       - Connecting with MongoDB Driver
       - Add your connection string into your application code
 - [Prisma e nestJs](https://docs.nestjs.com/recipes/prisma)
+- [z.string() validates empty strings](https://github.com/colinhacks/zod/issues/2466)
+- [Replace](https://stackoverflow.com/questions/41285211/overriding-interface-property-type-defined-in-typescript-d-ts-file)
+- [ObjectId](https://www.mongodb.com/pt-br/docs/manual/reference/method/ObjectId/)
 
 - [Não há suporte para Prisma Migrate](https://www.prisma.io/docs/orm/overview/databases/mongodb#no-support-for-prisma-migrate)
   - npx prisma migrate dev --name init
@@ -88,6 +93,11 @@
   - [Set up MongoDB + Prisma with Docker](https://haneenmahdin.medium.com/set-up-mongodb-prisma-with-docker-c8c2f28e85de)
   - [todo-prisma](https://github.com/raugusto96/todo-prisma/tree/main)
   - [Expressões Regulares Explicadas](https://chatgpt.com/c/66e34301-038c-8010-b6c2-cc69e57723cb)
+  - [ignite-labe-node/notifications-service](https://github.com/PedrohvFernandes/ignite-labe-node/tree/main/notifications-service)
+  - [criando-minha-api-nest-com-type-orm](https://github.com/PedrohvFernandes/type-orm-estudos/tree/main/Criando%20uma%20API%20e%20CRUD%20completos%20com%20Nest%20e%20TypeORM/criando-minha-api-nest-com-type-orm)
+  - [Sistema de paginação](https://github.com/PedrohvFernandes/nlw-unite/tree/main/api/src/routes)
+  - [Sistema de paginação com docker](https://github.com/PedrohvFernandes/learn-to-use-docker/tree/main)
+  - [Nlw expert](https://github.com/PedrohvFernandes/nlw-expert/tree/main)
 
 
 ## Possíveis erros:
@@ -111,3 +121,5 @@ Kind: Server selection timeout: No available servers. Topology: { Type: Unknown,
     - Solução: Verificar se no link esta o localhost com a porta 27017, se não tiver, coloque ele no link
     - Solução: Verificar se no arquivo do docker está a porta 27017, pois essa é a porta padrão do mongoDb
   - [Erro de conexão MongoDB](https://chatgpt.com/c/67144f3b-10f8-8010-91b3-790bcbce7fcc)
+  - [Error: 
+EPERM: operation not permitted, unlink 'C:\Users\Pedro\OneDrive\Documentos\GitHub\vue-nestjs-mongodb-pratica\api-nestjs\node_modules\.prisma\client\query_engine-windows.dll.node'](https://github.com/prisma/prisma/issues/9184)

@@ -88,22 +88,13 @@ const handleCreateComment = handleSubmit((values) => {
     <!-- 
         v-slot é uma diretiva do vuejs que é equivalente ao children do React. Basicamente é um slot default, ele é usado para passar conteúdo para o componente
     -->
-    <FormField v-slot="{ componentField }" name="username">
-      <FormItem>
-        <FormLabel>Nome</FormLabel>
-        <FormControl>
-          <!-- 
-            v-bind é uma diretiva do vuejs que é equivalente ao spread operator do React
-          -->
-          <Input type="text" placeholder="Seu Nome" v-bind="componentField" />
-        </FormControl>
-        <FormMessage />
-      </FormItem>
-    </FormField>
     <FormField v-slot="{ componentField }" name="title">
       <FormItem>
         <FormLabel>Titulo</FormLabel>
         <FormControl>
+          <!-- 
+            v-bind é uma diretiva do vuejs que é equivalente ao spread operator do React
+          -->
           <Input
             type="text"
             placeholder="Titulo do comentário"
@@ -113,7 +104,7 @@ const handleCreateComment = handleSubmit((values) => {
         <FormMessage />
       </FormItem>
     </FormField>
-    <FormField v-slot="{ componentField }" name="comment">
+    <FormField v-slot="{ componentField }" name="content">
       <FormItem>
         <FormLabel>Comentário</FormLabel>
         <FormControl>

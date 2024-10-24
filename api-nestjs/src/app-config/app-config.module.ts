@@ -24,7 +24,8 @@ import { ConfigModule } from '@nestjs/config'
       isGlobal: true,
       // Definimos o schema de validação das variáveis de ambiente
       validationSchema: joi.object({
-        STAR_WARS_API_URL: joi.string().required()
+        STAR_WARS_API_URL: joi.string().required(), // Com required, a variável de ambiente é obrigatória
+        PORT: joi.number().default(3333) // Porta padrão 3333
       })
     })
   ],

@@ -1,0 +1,3 @@
+### list characters
+
+GET http://localhost:3333/api/v1/comments?page=1&per_page=16

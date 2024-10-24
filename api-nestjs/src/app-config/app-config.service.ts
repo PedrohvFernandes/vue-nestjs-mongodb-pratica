@@ -10,4 +10,9 @@ export class AppConfigService {
   get starWarsApiUrl(): string {
     return this.config.get<string>('STAR_WARS_API_URL')
   }
+
+  get portApi(): number {
+    // return this.config.get<number>('PORT') ?? 3333
+    return this.config.get<number>('PORT') // Como deixamos a porta padrão no schema de validação, não precisamos mais do operador de coalescência nula
+  }
 }

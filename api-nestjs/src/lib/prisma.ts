@@ -1,7 +1,3 @@
-import { PrismaService } from '@/prisma/prisma.service'
+import { PrismaService } from '@infra/database/prisma/prisma.service'
 
 export const prisma = new PrismaService()
-
-prisma.onModuleInit().then(() => {
-  console.log('Database connected!')
-})

@@ -38,7 +38,7 @@ export default {
         // Se for dev retorna a url com a paginação do JSON Server, senão retorna a url com paginação
         return isDev
           ? `/comments?_page=${page}&_per_page=${perPage}`
-          : `/comments`
+          : `/comments?page=${page}&per_page=${perPage}`
       },
     },
   },

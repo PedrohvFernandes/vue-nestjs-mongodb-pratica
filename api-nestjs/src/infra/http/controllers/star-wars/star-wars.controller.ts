@@ -1,4 +1,4 @@
-import { AppConfigService } from 'prisma/src/app-config/app-config.service'
+import { AppConfigService } from '@appConfig/app-config.service'
 import { Controller, Get } from '@nestjs/common'
 import axios from 'axios'
 

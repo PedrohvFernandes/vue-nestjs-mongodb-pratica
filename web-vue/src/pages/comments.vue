@@ -59,14 +59,13 @@ export default {
         <!-- v-for="(comment, index) in commentsResponse.data" -->
         <CardComment
           v-for="comment in commentsResponse.data"
-          :comment="comment.comment"
+          :content="comment.content"
           :created-at="comment.createdAt"
-          :github-user="comment.githubUser"
-          :id="comment.id"
-          :key="comment.id"
+          :_id="comment._id"
+          :key="comment._id"
           :title="comment.title"
           :updated-at="comment.updatedAt"
-          :username="comment.username"
+          :user="comment.user"
         />
       </template>
     </div>

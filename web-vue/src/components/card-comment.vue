@@ -14,7 +14,7 @@ import {
 
 import { FormattedDate } from '.'
 
-const { comment, createdAt, githubUser, title, updatedAt, username } =
+const { content, createdAt, title, updatedAt, user } =
   defineProps<CommentResponse>()
 </script>
 
@@ -26,10 +26,10 @@ const { comment, createdAt, githubUser, title, updatedAt, username } =
       <header class="flex justify-between items-center mb-2">
         <div class="flex flex-col">
           <p class="inline-flex items-center text-sm font-semibold">
-            {{ username }}
+            {{ user.username }}
           </p>
           <p class="italic text-sm text-muted-foreground">
-            GitHub: {{ githubUser }}
+            GitHub: {{ user.githubUser }}
           </p>
         </div>
         <!-- Dropdown menu -->
@@ -54,7 +54,7 @@ const { comment, createdAt, githubUser, title, updatedAt, username } =
         <p
           class="h-full max-h-32 text-secondary overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-primary-foreground [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-foreground"
         >
-          {{ comment }}
+          {{ content }}
         </p>
       </div>
       <div

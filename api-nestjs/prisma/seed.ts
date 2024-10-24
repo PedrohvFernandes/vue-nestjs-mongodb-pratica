@@ -1,4 +1,4 @@
-import { prisma } from '@/lib'
+import { prisma } from '@lib'
 import { faker } from '@faker-js/faker'
 import { Prisma } from '@prisma/client'
 import dayjs from 'dayjs'
@@ -23,8 +23,8 @@ export async function seed() {
   const commentsToInsert: Prisma.CommentCreateManyInput[] = await Promise.all(
     Array.from({ length: 41 }, async () => ({
       userId,
-      comment: faker.lorem.sentence(),
-      title: faker.lorem.words(),
+      content: faker.word.adjective(18),
+      title: faker.word.adjective(5),
       createdAt: faker.date.recent({
         days: 30,
         refDate: dayjs().subtract(8, 'days').toDate()
@@ -46,5 +46,8 @@ seed()
     console.error('Error seeding database:', error)
   })
   .finally(async () => {
-    await prisma.$disconnect()
+    // await prisma.onModuleDestroy().then(() => {
+    //   console.log('Database connection closed.')
+    // })
+    await prisma.onModuleDestroy()
   })
