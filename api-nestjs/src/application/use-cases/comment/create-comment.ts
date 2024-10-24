@@ -37,7 +37,7 @@ export class CreateComment {
     }
 
     return {
-      comment
+      comment: commentCreated
     }
   }
 }

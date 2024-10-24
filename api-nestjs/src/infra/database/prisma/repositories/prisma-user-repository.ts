@@ -2,8 +2,6 @@ import { UserRepository } from '@application/repositories/users-repository'
 import { PrismaService } from '../prisma.service'
 import { User } from '@src/application/entities/user'
 import { PrismaUserMapper } from '../mappers/prisma-user-mapper'
-import { UserNotFound } from '@application/use-cases/errors/user-not-found'
-import { UserNotCreate } from '@application/use-cases/errors/user-not-create'
 import { Injectable } from '@nestjs/common'
 
 // Não esquece desse Injectable, ele é importante para o nestjs passar o prisma como dependencia
@@ -18,7 +16,7 @@ export class PrismaUserRepository implements UserRepository {
     })
 
     if (!userCreate) {
-      throw new UserNotCreate()
+      return
     }
 
     return PrismaUserMapper.toDomain(userCreate)
@@ -32,7 +30,7 @@ export class PrismaUserRepository implements UserRepository {
     })
 
     if (!user) {
-      throw new UserNotFound()
+      return
     }
 
     return PrismaUserMapper.toDomain(user)

@@ -1,5 +1,6 @@
 import { User } from '@application/entities/user'
 import { UserRepository } from '@application/repositories/users-repository'
+import { ErrorCreateUser } from '../errors/error-create-user'
 
 interface CreateUserRequest {
   // user: User
@@ -25,15 +26,19 @@ export class CreateUser {
 
     const { githubUser, username } = request
 
-    const userCreate = new User({
+    const user = new User({
       githubUser,
       username
     })
 
-    await this.userRepository.create(userCreate)
+    const userCreated = await this.userRepository.create(user)
+
+    if (!userCreated) {
+      throw new ErrorCreateUser()
+    }
 
     return {
-      user: userCreate
+      user: userCreated
     }
   }
 }
