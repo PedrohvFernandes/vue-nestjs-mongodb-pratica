@@ -8,10 +8,11 @@ import { CreateUser } from '@src/application/use-cases/user/create-user'
 import { GetUser } from '@src/application/use-cases/user/get-user'
 import { CommentController } from './controllers/comment/comment.controller'
 import { DeleteComment } from '@src/application/use-cases/comment/delete-comment'
+import { UserController } from './controllers/user/user.controller'
 
 @Module({
   imports: [DatabaseModule],
-  controllers: [CommentController],
+  controllers: [CommentController, UserController],
   providers: [
     CreateComment,
     GetAllComments,

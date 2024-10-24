@@ -1,0 +1,18 @@
+### list characters
+
+GET http://localhost:3333/api/v1/users
+Content-Type: application/json
+
+{
+  "userId": "671a91e50389919e458e51a4"
+}
+
+###
+
+POST http://localhost:3333/api/v1/users
+Content-Type: application/json
+
+{
+  "githubUser": "Pedro Henrique Vieira Fernandes",
+  "username": "pedrohvfernandessssss"
+}

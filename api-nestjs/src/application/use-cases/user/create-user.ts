@@ -1,6 +1,7 @@
 import { User } from '@application/entities/user'
 import { UserRepository } from '@application/repositories/users-repository'
-import { ErrorCreateUser } from '../errors/error-create-user'
+import { Injectable } from '@nestjs/common'
+import { ErrorUserExist } from '../errors/error-user-exist'
 
 interface CreateUserRequest {
   // user: User
@@ -12,6 +13,7 @@ interface CreateUserResponse {
   user: User
 }
 
+@Injectable()
 export class CreateUser {
   // eslint-disable-next-line no-useless-constructor
   constructor(private readonly userRepository: UserRepository) {}
@@ -34,7 +36,7 @@ export class CreateUser {
     const userCreated = await this.userRepository.create(user)
 
     if (!userCreated) {
-      throw new ErrorCreateUser()
+      throw new ErrorUserExist()
     }
 
     return {

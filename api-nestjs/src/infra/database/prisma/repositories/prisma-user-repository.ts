@@ -11,13 +11,21 @@ export class PrismaUserRepository implements UserRepository {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(user: User): Promise<User> {
-    const userCreate = await this.prisma.user.create({
-      data: user
+    const userExist = await this.prisma.user.findFirst({
+      where: {
+        username: user.username
+      }
     })
 
-    if (!userCreate) {
+    if (userExist) {
       return
     }
+
+    const raw = PrismaUserMapper.toPrisma(user)
+
+    const userCreate = await this.prisma.user.create({
+      data: raw
+    })
 
     return PrismaUserMapper.toDomain(userCreate)
   }
