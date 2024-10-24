@@ -67,13 +67,16 @@ import { ExternalLinkIcon, GithubIcon } from 'lucide-vue-next'
     </div>
 
     <CardComment
-      id="1"
-      comment="lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in."
+      _id="1"
+      :user="{
+        _id: 'user1',
+        githubUser: 'Seu usuário do GitHub',
+        username: 'Seu nome',
+      }"
+      content="lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in."
       created-at="2021-09-01T00:00:00Z"
-      github-user="Seu usuário do GitHub"
       title="Titulo do comentário"
       updated-at="2021-09-01T00:00:00Z"
-      username="Seu nome"
     />
   </main>
 </template>
