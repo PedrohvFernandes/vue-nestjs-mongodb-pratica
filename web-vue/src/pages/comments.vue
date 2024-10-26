@@ -23,7 +23,7 @@ const refPage = ref(
     : 1, // Se não vier nada ou 0
 )
 
-const refPerPage = ref(16)
+const refPerPage = ref(12)
 
 const { data: commentsResponse, isLoading } =
   // useQuery<CommentResponseServerJson>({
