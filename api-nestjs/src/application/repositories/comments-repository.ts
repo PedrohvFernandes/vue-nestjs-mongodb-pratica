@@ -9,12 +9,17 @@ export abstract class CommentRepository {
     page: number,
     perPage: number
   ): Promise<{
+    first: number
+    prev: number | null
+    next: number | null
+    last: number
+    pages: number
+    items: number
+    total: number
     comments: {
       comment: Comment
       user: User
     }[]
-    total: number
-    totalPerPage: number
   }>
 
   abstract delete(commentId: string): Promise<void>

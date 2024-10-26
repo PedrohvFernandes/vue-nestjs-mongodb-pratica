@@ -6,7 +6,7 @@ export interface CommentResponseServerJson {
   prev: number | null
   next: number | null
   last: number
-  pages: number
-  items: number
-  data: CommentResponse[]
+  pages: number // Paginas disponíveis
+  items: number // Itens por página
+  data: CommentResponse
 }

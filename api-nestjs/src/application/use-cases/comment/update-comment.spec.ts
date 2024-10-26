@@ -24,7 +24,7 @@ describe('Update comment use case', () => {
       userId: faker.string.uuid()
     })
 
-    const { commentUpdate } = await updateComment.execute({
+    const commentUpdated = await updateComment.execute({
       id: comment.id,
       userId: comment.userId,
       content: faker.word.adjective({
@@ -41,6 +41,6 @@ describe('Update comment use case', () => {
       })
     })
 
-    expect(commentRepository.comments).toContain(commentUpdate)
+    expect(commentUpdated.comment).toEqual(commentRepository.comments[0])
   })
 })

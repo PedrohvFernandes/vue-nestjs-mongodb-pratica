@@ -23,48 +23,63 @@ export class CommentController {
   @Get()
   async allComments(
     @Query('page') page: string,
-    @Query('per_page') perPage: string
+    @Query('perPage') perPage: string
   ): Promise<{
+    first: number
+    prev: number | null
+    next: number | null
+    last: number
+    pages: number
+    items: number
+    total: number
     comments: {
       comment: Comment
       user: User
     }[]
-    total: number
-    totalPerPage: number
   }> {
     const pageNumber = Number(page) || 1
     const perPageNumber = Number(perPage) || 16
 
-    const { comments, total, totalPerPage } = await this.getAllComments.execute(
-      {
+    const { comments, first, items, last, next, pages, prev, total } =
+      await this.getAllComments.execute({
         page: pageNumber,
         perPage: perPageNumber
-      }
-    )
+      })
 
     return {
-      comments,
+      first,
+      items,
+      last,
+      next,
+      pages,
+      prev,
       total,
-      totalPerPage
+      comments
     }
   }
 
   @Post()
-  async create(@Body() body: CreateCommentBody): Promise<Comment> {
+  async create(@Body() body: CreateCommentBody): Promise<{
+    comment?: Comment
+    messageError?: string
+  }> {
     const { content, userId, title } = body
 
-    const { comment } = await this.createComment.execute({
+    const { comment, messageError } = await this.createComment.execute({
       content,
       userId,
       title
     })
 
-    return comment
+    return { comment, messageError }
   }
 
   @Put()
-  async update(@Body() body: UpdateCommentBody): Promise<{ comment: Comment }> {
-    const { commentUpdate } = await this.updateComment.execute({
+  async update(@Body() body: UpdateCommentBody): Promise<{
+    comment?: Comment
+    messageError?: string
+  }> {
+    const { comment, messageError } = await this.updateComment.execute({
       id: body.id,
       userId: body.userId,
       content: body.content,
@@ -72,7 +87,8 @@ export class CommentController {
     })
 
     return {
-      comment: commentUpdate
+      comment,
+      messageError
     }
   }
 

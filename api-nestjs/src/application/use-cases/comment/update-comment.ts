@@ -14,7 +14,8 @@ interface UpdateCommentRequest {
 }
 
 interface UpdateCommentResponse {
-  commentUpdate: Comment
+  comment?: Comment
+  messageError?: string
 }
 
 @Injectable()
@@ -23,33 +24,35 @@ export class UpdateComment {
   constructor(private readonly commentRepository: CommentRepository) {}
 
   async execute(request: UpdateCommentRequest): Promise<UpdateCommentResponse> {
-    const comment = await this.commentRepository.findById(request.id)
+    const commentUpdate = await this.commentRepository.findById(request.id)
 
-    if (!comment) {
-      throw new CommentNotFound()
+    if (!commentUpdate) {
+      return {
+        messageError: new CommentNotFound().message
+      }
     }
 
-    const userIsOwner = comment.userId === request.userId
+    const userIsOwner = commentUpdate.userId === request.userId
 
     if (!userIsOwner) {
       throw new UserNotOwner()
     }
 
     // Atualizando o comentário com as novas instâncias de Title e Content
-    const updatedComment = new Comment(
+    const commentUpdated = new Comment(
       {
-        ...comment.propsComment, // Pegamos todas as propriedades do comentário que estamos querendo atualizar e passamos para o novo comentário
-        content: new Content(request.content ?? comment.content.value), // Se o content for nulo, mantemos o que já tinha
-        title: new Title(request.title ?? comment.title.value),
+        ...commentUpdate.valuesComment, // Pegamos todas as propriedades do comentário que estamos querendo atualizar e passamos para o novo comentário
+        content: new Content(request.content ?? commentUpdate.content.value), // Se o content for nulo, mantemos o que já tinha
+        title: new Title(request.title ?? commentUpdate.title.value),
         updatedAt: new Date()
       },
-      comment.id
+      commentUpdate.id
     )
 
-    await this.commentRepository.update(updatedComment)
+    await this.commentRepository.update(commentUpdated)
 
     return {
-      commentUpdate: updatedComment
+      comment: commentUpdated
     }
   }
 }

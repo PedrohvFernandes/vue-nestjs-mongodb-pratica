@@ -1,18 +1,21 @@
 import { toast } from '@/components/ui/toast'
-import { CommentResponseServerJson } from '../types'
+import {
+  CommentResponse,
+  // CommentResponseServerJson
+} from '../types'
 import { api } from '@/lib'
 import { ConfigRoutes } from '@/config'
 
 export async function getComment(
   page: number,
   perPage: number,
-): Promise<CommentResponseServerJson> {
+  // ): Promise<CommentResponseServerJson> {
+): Promise<CommentResponse> {
   try {
-    const { data } = await api.get<CommentResponseServerJson>(
+    // const { data } = await api.get<CommentResponseServerJson>(
+    const { data } = await api.get<CommentResponse>(
       ConfigRoutes.comments.backend.comments(page, perPage),
     )
-
-    // await new Promise((resolve) => setTimeout(resolve, 200000))
 
     toast({
       title: 'Comentários carregados com sucesso',

@@ -8,7 +8,8 @@ interface GetUserRequest {
 }
 
 interface GetUserResponse {
-  user: User
+  user?: User
+  messageError?: string
 }
 
 @Injectable()
@@ -20,7 +21,9 @@ export class GetUser {
     const user = await this.userRepository.findById(request.userId)
 
     if (!user) {
-      throw new UserNotFound()
+      return {
+        messageError: new UserNotFound().message
+      }
     }
 
     return { user }

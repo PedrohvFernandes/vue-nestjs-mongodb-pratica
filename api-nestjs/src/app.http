@@ -1,0 +1,6 @@
+# Apos entrar na rota /api/v1/auth/callback, copie o token gerado e cole no campo Authorization. Essa rota aqui valida o token e retorna o usuario logado. Esse token expira com 10h
+
+@token= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3MjQyODM1MCIsInVzZXJuYW1lIjoiUGVkcm9odkZlcm5hbmRlcyIsImlhdCI6MTcyOTg4NTEwMywiZXhwIjoxNzI5OTIxMTAzfQ.D6XZFyCEta6AbEqYZLo0Mj52dUqC9ft1KillnGoZnYs
+
+GET http://localhost:3333/api/v1/profile
+Authorization: Bearer {{token}}

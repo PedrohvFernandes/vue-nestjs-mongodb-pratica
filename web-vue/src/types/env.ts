@@ -36,9 +36,10 @@ index-DPMisPo_.js:23 Uncaught ZodError: [
     at index-DPMisPo_.js:31:3301
 */
 const envSchema = z.object({
-  VITE_API_COMMENTS_TEST: z.string().url().nullish(), // nullish é para aceitar null e undefined, porque em produção não vai ter o VITE_API_COMMENTS_TEST
-  VITE_API_COMMENTS_LIVE: z.string().url(),
-  VITE_ENVIRONMENT: z.string(),
+  VITE_API_COMMENTS: z.string().url(),
+  VITE_GITHUB_CLIENT_ID: z.string(),
+  VITE_GITHUB_CLIENT_SECRET: z.string(),
+  VITE_PRE_FIX: z.string(),
 })
 
 // O process.env é tudo o que vem dentro do .env, quando eu executo o parse, ele vai verificar se o que está dentro do .env é igual ao que está dentro do envSchema

@@ -7,6 +7,7 @@ export function makeUser(override: Override = {}) {
   return new User({
     githubUser: faker.internet.userName(),
     username: faker.internet.userName(),
+    accessToken: faker.string.uuid(),
     ...override
   })
 }

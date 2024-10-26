@@ -59,13 +59,14 @@ import { useRoute, useRouter } from 'vue-router'
 import { Button } from '@/components/ui/button'
 import { PaginationProps } from '@/types/pagination'
 
-const { items, page, pages, perPage } = defineProps<PaginationProps>()
+const { items, page, pages, perPage, total } = defineProps<PaginationProps>()
 // const refPage = ref(page)
 const refPagination = reactive<PaginationProps>({
   page: page,
   items: items,
   pages: pages,
   perPage: perPage,
+  total: total,
 })
 const router = useRouter()
 const route = useRoute()
@@ -119,7 +120,7 @@ if (page > pages) {
     class="flex flex-col md:flex-row items-center justify-between gap-2 w-full text-muted-foreground"
   >
     <span class="text-sm md:text-lg"
-      >Showing {{ refPagination.perPage }} of {{ items }} items</span
+      >Showing {{ refPagination.perPage }} of {{ total }} items</span
     >
 
     <div class="flex items-center gap-8">

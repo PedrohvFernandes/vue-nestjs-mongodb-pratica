@@ -43,4 +43,55 @@ export class PrismaUserRepository implements UserRepository {
 
     return PrismaUserMapper.toDomain(user)
   }
+
+  async findByGithubUser(githubUser: string): Promise<User> {
+    const user = await this.prisma.user.findFirst({
+      where: {
+        githubUser
+      }
+    })
+
+    if (!user) {
+      return
+    }
+
+    return PrismaUserMapper.toDomain(user)
+  }
+
+  async updateToken(user: User): Promise<User> {
+    const raw = PrismaUserMapper.toPrisma(user)
+
+    const userUpdated = await this.prisma.user.update({
+      where: {
+        id: user.id
+      },
+      data: {
+        accessToken: raw.accessToken,
+        updatedAt: raw.updatedAt
+      }
+    })
+
+    return PrismaUserMapper.toDomain(userUpdated)
+  }
+
+  async tokenIsValid(githubUser: string): Promise<{
+    accessToken: string
+  }> {
+    const user = await this.prisma.user.findFirst({
+      where: {
+        githubUser
+      }
+    })
+
+    // Deixei para fazer essa validação no usecase usando findByGithubUser
+    // if (!user) {
+    //   return
+    // }
+
+    if (!user.accessToken) {
+      return
+    }
+
+    return PrismaUserMapper.toDomainAccessToken(user)
+  }
 }

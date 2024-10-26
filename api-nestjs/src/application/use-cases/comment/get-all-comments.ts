@@ -9,12 +9,17 @@ interface CommentRequestProps {
 }
 
 interface CommentResponseProps {
+  first: number
+  prev: number | null
+  next: number | null
+  last: number
+  pages: number
+  items: number
+  total: number
   comments: {
     comment: Comment
     user: User
   }[]
-  total: number
-  totalPerPage: number
 }
 
 @Injectable()
@@ -27,9 +32,14 @@ export class GetAllComments {
 
     const comments = await this.commentRepository.findAll(page, perPage)
     return {
-      comments: comments.comments,
+      first: comments.first,
+      prev: comments.prev,
+      next: comments.next,
+      last: comments.last,
+      pages: comments.pages,
+      items: comments.items,
       total: comments.total,
-      totalPerPage: comments.totalPerPage
+      comments: comments.comments
     }
   }
 }

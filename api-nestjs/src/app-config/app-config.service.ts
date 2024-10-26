@@ -15,4 +15,24 @@ export class AppConfigService {
     // return this.config.get<number>('PORT') ?? 3333
     return this.config.get<number>('PORT') // Como deixamos a porta padrão no schema de validação, não precisamos mais do operador de coalescência nula
   }
+
+  get githubClientId(): string {
+    return this.config.get<string>('GITHUB_CLIENT_ID')
+  }
+
+  get githubClientSecret(): string {
+    return this.config.get<string>('GITHUB_CLIENT_SECRET')
+  }
+
+  get jwtSecret(): string {
+    return this.config.get<string>('JWT_SECRET')
+  }
+
+  get apiComments(): string {
+    return this.config.get<string>('API_COMMENTS')
+  }
+
+  get preFix(): string {
+    return this.config.get<string>('PRE_FIX')
+  }
 }

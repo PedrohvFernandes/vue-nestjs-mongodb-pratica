@@ -1,12 +1,10 @@
 import { env } from '@/types'
-import { isDev } from '@/utils'
 
 export default {
   comments: {
     baseUrls: {
-      apiProduction: isDev
-        ? (env.VITE_API_COMMENTS_TEST as string) // Como ela pode ser null/undefined em produção, eu preciso fazer um cast para string, para não dar problema de tipagem no axios.create
-        : env.VITE_API_COMMENTS_LIVE,
+      comments_api: env.VITE_API_COMMENTS,
+      comments_api_pre_fix: `${env.VITE_API_COMMENTS}${env.VITE_PRE_FIX}`,
     },
     gitHub: {
       baseUrls: {
@@ -17,6 +15,11 @@ export default {
       target: {
         blank: '_blank',
         parent: '_parent',
+      },
+
+      oauth: {
+        clientId: env.VITE_GITHUB_CLIENT_ID,
+        clientSecret: env.VITE_GITHUB_CLIENT_SECRET,
       },
     },
   },

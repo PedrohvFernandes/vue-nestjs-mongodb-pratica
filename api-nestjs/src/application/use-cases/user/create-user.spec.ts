@@ -14,7 +14,8 @@ describe('Create user use case', () => {
     // Por que não usar o makeUser aqui? Porque ele cria um objeto User, e o execute do CreateUser espera um CreateUserRequest, na ideia de ser params de um request, ou seja, não podemos cria um objeto de user diretamente, temos que passar os params para o execute, para ele criar o objeto User e passar para o BD
     const { user } = await createUser.execute({
       username: faker.internet.userName(),
-      githubUser: faker.internet.userName()
+      githubUser: faker.internet.userName(),
+      accessToken: faker.string.uuid()
     })
 
     expect(userRepository.users).toContain(user)

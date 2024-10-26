@@ -20,4 +20,35 @@ export class InMemoryUserRepository implements UserRepository {
 
     return user
   }
+
+  async findByGithubUser(githubUser: string): Promise<User> {
+    const user = this.users.find((item) => item.githubUser === githubUser)
+    if (!user) {
+      throw new UserNotFound()
+    }
+
+    return user
+  }
+
+  async updateToken(User: User): Promise<User> {
+    const index = this.users.findIndex((item) => item.id === User.id)
+
+    this.users[index] = User
+
+    const user = this.users.find((item) => item.id === User.id)
+
+    return user
+  }
+
+  async tokenIsValid(githubUser: string): Promise<{
+    accessToken: string
+  }> {
+    const user = this.users.find((item) => item.githubUser === githubUser)
+
+    if (!user) {
+      return { accessToken: '' }
+    }
+
+    return { accessToken: user.accessToken }
+  }
 }

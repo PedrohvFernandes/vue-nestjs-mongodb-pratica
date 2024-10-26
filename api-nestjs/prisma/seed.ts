@@ -13,7 +13,13 @@ export async function seed() {
   await prisma.user.create({
     data: {
       githubUser: faker.internet.userName(),
-      username: faker.person.fullName()
+      username: faker.person.fullName(),
+      createdAt: faker.date.recent({
+        days: 30,
+        refDate: dayjs().subtract(8, 'days').toDate()
+      }),
+      accessToken:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlBlZHJvIEhlbnJpcXVlIiwiaWF0IjoxNTE2MjM5MDIyfQ.oG7qSeIcsAFBmFgzuHBoDPQoEkZ3BJM7IRypT64gB6w'
     }
   })
 

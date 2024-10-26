@@ -334,3 +334,30 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
   ```
 
   ### [Outras pesquisas que eu fiz](https://chatgpt.com/c/6707658f-ed84-8010-a130-8d288c50d513)
+
+
+  ## Fazendo OAuth com o GitHub
+  - [Video que me ajudou - Da UI ao Código - Ticket da Maratona Explorer](https://www.youtube.com/watch?v=qDerqzmELx8)
+    - [Profile Settings](https://github.com/settings/profile)
+      - Developer settings
+        - OAuth Apps
+          - New OAuth App
+            - Application Name: Create two applications, one for development and one for production
+            - Homepage URL
+            - Authorization callback URL
+            - Register application
+          - Exist Application: Enter your application
+            - Client ID
+            - Client Secret
+              - Generate a new client secret or Regenerate client secret: Generate a new client secret, delete the old one and put the new one in the .env
+                  
+        - [Developer Settings](https://github.com/settings/developers) --> Entre ou crie uma nova aplicação(New OAuth App). Passe o Application Name, Homepage URL e Authorization callback URL --> Url de quando o usuário é redirecionado após autorizar o acesso, no caso um rota do back-end ou front, eu usei back, para poder manipular as informações do usuario dentro do meu banco de dados.
+        - Ex das minhas aplicações: comments(dev) --> http://localhost:5172 e http://localhost:3333/api/v1/auth/callback, comments(prod) --> https://comentarios-nine.vercel.app e https://comen.../api/v1/auth/callback
+    - Envs, passe o client_id e o client_secret, no modo dev pegar esses dois valores do application [comments(dev)](https://github.com/settings/applications/2752426) e passe para o arquivo .env daqui, para prod na vercel pegar esses dois valores do application [comments](https://github.com/settings/applications/2752473) e passe para ela.
+    ```
+      VITE_GITHUB_CLIENT_ID=seu_client_id
+      VITE_GITHUB_CLIENT_SECRET=seu_client_secret
+    ```
+    - Aqui no front eu crio um link assim: `https://github.com/login/oauth/authorize?client_id=${ConfigBases.comments.gitHub.oauth.clientId}`
+
+  - [Docs OAuth GitHub](https://docs.github.com/pt/developers/apps/building-oauth-apps/authorizing-oauth-apps)

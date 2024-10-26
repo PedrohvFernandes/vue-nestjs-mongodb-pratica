@@ -13,7 +13,8 @@ interface CreateCommentRequest {
 }
 
 interface CreateCommentResponse {
-  comment: Comment
+  comment?: Comment
+  messageError?: string
 }
 
 @Injectable()
@@ -24,20 +25,22 @@ export class CreateComment {
   async execute(request: CreateCommentRequest): Promise<CreateCommentResponse> {
     const { content, title, userId } = request
 
-    const comment = new Comment({
+    const commentCreated = new Comment({
       userId,
       content: new Content(content),
       title: new Title(title)
     })
 
-    const commentCreated = await this.commentRepository.create(comment)
+    const comment = await this.commentRepository.create(commentCreated)
 
-    if (!commentCreated) {
-      throw new ErrorCreateComment()
+    if (!comment) {
+      return {
+        messageError: new ErrorCreateComment().message
+      }
     }
 
     return {
-      comment: commentCreated
+      comment
     }
   }
 }

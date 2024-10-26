@@ -1,11 +1,14 @@
-### list characters
-
 GET http://localhost:3333/api/v1/users
 Content-Type: application/json
 
 {
-  "userId": "671a91e50389919e458e51a4"
+  "userId": "671c5c01b122bb7a32939c94"
 }
+
+###
+
+
+GET http://localhost:3333/api/v1/users/PedrohvFernandes
 
 ###
 
@@ -14,5 +17,6 @@ Content-Type: application/json
 
 {
   "githubUser": "Pedro Henrique Vieira Fernandes",
-  "username": "pedrohvfernandessssss"
+  "username": "pedrohvfernandessssss",
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnaXRodWJVc2VyIjoiUGVkcm9odkZlcm5hbmRlcyIsInVzZXJuYW1lIjoiUGVkcm8gSGVucmlxdWUgVmllaXJhIEZlcm5hbmRlcyIsImlhdCI6MTcyOTkxMTgwOSwiZXhwIjoxNzI5OTQ3ODA5fQ.wpeL51KC0HuUnMLwlpxd-Zu6zpQYU8D30ePfQ2kbVz2"
 }

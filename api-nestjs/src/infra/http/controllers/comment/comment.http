@@ -1,6 +1,4 @@
-### list characters
-
-GET http://localhost:3333/api/v1/comments?page=1&per_page=16
+GET http://localhost:3333/api/v1/comments?page=1&perPage=16
 
 ###
 
@@ -11,7 +9,7 @@ Content-Type: application/json
 {
   "content": "Um novo comentario",
   "title": "Um novo titulo",
-  "userId": "671a91e50389919e458e51a4"
+  "userId": "671c5c01b122bb7a32939c94"
 }
 
 ###

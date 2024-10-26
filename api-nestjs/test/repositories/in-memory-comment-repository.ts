@@ -35,12 +35,17 @@ export class InMemoryCommentRepository implements CommentRepository {
     page: number,
     perPage: number
   ): Promise<{
+    first: number
+    prev: number | null
+    next: number | null
+    last: number
+    pages: number
+    items: number
+    total: number
     comments: {
       comment: Comment
       user: User
     }[]
-    total: number
-    totalPerPage: number
   }> {
     // const comments = this.comments.slice((page - 1) * perPage, page * perPage)
 
@@ -53,14 +58,20 @@ export class InMemoryCommentRepository implements CommentRepository {
     // Com isso fazemos um slice do array de comentários, pegando do startIndex até o endIndex. De quanto até quanto queremos pegar.
     const comments = this.comments.slice(startIndex, endIndex)
     return {
+      first: 1,
+      prev: page > 1 ? page - 1 : null,
+      next: endIndex < this.comments.length ? page + 1 : null,
+      last: Math.ceil(this.comments.length / perPage),
+      pages: Math.ceil(this.comments.length / perPage),
+      items: comments.length,
+      total: this.comments.length,
+
       comments: comments.map((comment) => {
         return {
           comment,
           user: makeUser()
         }
-      }),
-      total: this.comments.length,
-      totalPerPage: comments.length
+      })
     }
   }
 

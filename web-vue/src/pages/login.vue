@@ -8,6 +8,8 @@ import {
 import { Button } from '@/components/ui/button'
 import { ConfigBases } from '@/config'
 import { ExternalLinkIcon, GithubIcon } from 'lucide-vue-next'
+
+const signInUrl = `https://github.com/login/oauth/authorize?client_id=${ConfigBases.comments.gitHub.oauth.clientId}`
 </script>
 
 <template>
@@ -35,12 +37,15 @@ import { ExternalLinkIcon, GithubIcon } from 'lucide-vue-next'
         class="mt-10"
       >
         <Button
-          href="{signInUrl}"
-          class="flex justify-center items-center gap-2 p-6 rounded font-bold"
+          class="gap-2 p-6 rounded font-bold"
           variant="secondary"
+          :as-child="true"
         >
-          <GithubIcon />
-          Faça login com GitHub
+          <a class="flex justify-center items-center gap-2" :href="signInUrl">
+            <GithubIcon />
+
+            Faça login com GitHub
+          </a>
         </Button>
       </BottomLine>
 
@@ -67,16 +72,25 @@ import { ExternalLinkIcon, GithubIcon } from 'lucide-vue-next'
     </div>
 
     <CardComment
-      _id="1"
+      :comment="{
+        _id: '1',
+        comment: {
+          title: { title: 'Titulo do comentário' },
+          content: {
+            content:
+              'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.',
+          },
+          createdAt: '2021-09-01T00:00:00Z',
+          updatedAt: '2021-09-01T00:00:00Z',
+        },
+      }"
       :user="{
         _id: 'user1',
-        githubUser: 'Seu usuário do GitHub',
-        username: 'Seu nome',
+        user: {
+          githubUser: 'Seu usuário do GitHub',
+          username: 'Seu nome',
+        },
       }"
-      content="lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in."
-      created-at="2021-09-01T00:00:00Z"
-      title="Titulo do comentário"
-      updated-at="2021-09-01T00:00:00Z"
     />
   </main>
 </template>

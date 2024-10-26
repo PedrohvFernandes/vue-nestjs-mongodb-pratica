@@ -15,20 +15,27 @@ export type CommentProps = {
 export class Comment {
   // O id é gerado pelo banco de dados, então não precisamos passar ele no construtor, por isso ele é opcional, porque so iremos passar o id quando formos atualizar um comentário
   private readonly _id: string
-  private readonly props: CommentProps
+  private readonly comment: CommentProps
 
   // Esse replace é para garantir que o createdAt seja sempre uma data válida
-  constructor(props: Replace<CommentProps, { createdAt?: Date }>, id?: string) {
+  constructor(
+    comment: Replace<CommentProps, { createdAt?: Date }>,
+    id?: string
+  ) {
     this._id = id ?? randomUUID() // Se o id for passado, ele usa o id, senão ele cria um novo id, isso é para quando formos atualizar um comentário, passamos o id dele. E o randomUUID é para criar um id aleatório quando for criar um novo comentário para testar, eu não precisar passar um id por la. Ex: na pasta test, no factory do comment.
-    this.props = {
-      ...props,
+    this.comment = {
+      ...comment,
       // Se o createdAt não for passado, ele cria uma nova data
-      createdAt: props.createdAt ?? new Date() // Aqui o mesma situação que o id, no factory do comment, na pasta test. De eu não precisar passar um createdAt por lá e nem pelo test do comment, ele cria uma nova data.
+      createdAt: comment.createdAt ?? new Date() // Aqui o mesma situação que o id, no factory do comment, na pasta test. De eu não precisar passar um createdAt por lá e nem pelo test do comment, ele cria uma nova data.
     }
   }
 
+  public get valuesComment(): CommentProps {
+    return this.comment
+  }
+
   public get content(): Content {
-    return this.props.content
+    return this.comment.content
   }
 
   public set content(content: Content) {
@@ -37,35 +44,43 @@ export class Comment {
     //   throw new Error('Content is too short');
     // }
 
-    this.props.content = content
+    this.comment.content = content
+  }
+
+  public get contentValue(): string {
+    return this.comment.content.value
   }
 
   public get title(): Title {
-    return this.props.title
-  }
-
-  public get propsComment(): CommentProps {
-    return this.props
+    return this.comment.title
   }
 
   public set title(title: Title) {
-    this.props.title = title
+    this.comment.title = title
+  }
+
+  public get titileValue(): string {
+    return this.comment.title.value
+  }
+
+  public get propsComment(): CommentProps {
+    return this.comment
   }
 
   public get userId(): string {
-    return this.props.userId
+    return this.comment.userId
   }
 
   public get createdAt(): Date {
-    return this.props.createdAt
+    return this.comment.createdAt
   }
 
   public get updatedAt(): Date {
-    return this.props.updatedAt
+    return this.comment.updatedAt
   }
 
   public set updatedAt(updatedAt: Date | null) {
-    this.props.updatedAt = updatedAt
+    this.comment.updatedAt = updatedAt
   }
 
   public get id(): string {

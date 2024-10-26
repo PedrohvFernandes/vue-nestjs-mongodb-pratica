@@ -1,5 +1,3 @@
-import { isDev } from '@/utils'
-
 export default {
   comments: {
     default: {
@@ -35,10 +33,13 @@ export default {
     },
     backend: {
       comments(page: number, perPage: number) {
-        // Se for dev retorna a url com a paginação do JSON Server, senão retorna a url com paginação
-        return isDev
-          ? `/comments?_page=${page}&_per_page=${perPage}`
-          : `/comments?page=${page}&per_page=${perPage}`
+        // // Se for dev retorna a url com a paginação do JSON Server, senão retorna a url com paginação
+        // return isDev
+        //   ? `/comments?_page=${page}&_per_page=${perPage}` // Retorna a paginação do JSON Server
+        //   : `/comments?page=${page}&per_page=${perPage}`
+
+        // Como o nosso backend já está configurado para retornar a paginação correta, não precisamos mais dessa verificação. Porque antes usávamos o JSON Server para simular um backend, agora temos um backend real
+        return `/comments?page=${page}&perPage=${perPage}`
       },
     },
   },

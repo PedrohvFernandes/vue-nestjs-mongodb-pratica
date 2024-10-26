@@ -7,10 +7,12 @@ interface CreateUserRequest {
   // user: User
   username: string
   githubUser: string
+  accessToken: string
 }
 
 interface CreateUserResponse {
-  user: User
+  user?: User
+  messageError?: string
 }
 
 @Injectable()
@@ -26,17 +28,20 @@ export class CreateUser {
     //   username: user.username
     // })
 
-    const { githubUser, username } = request
+    const { githubUser, username, accessToken } = request
 
     const user = new User({
       githubUser,
-      username
+      username,
+      accessToken
     })
 
     const userCreated = await this.userRepository.create(user)
 
     if (!userCreated) {
-      throw new ErrorUserExist()
+      return {
+        messageError: new ErrorUserExist().message
+      }
     }
 
     return {

@@ -17,12 +17,13 @@ async function bootstrap() {
   const configService = new AppConfigService(config)
 
   // Prefixo global para todas as rotas, ex:  http://localhost:3333/api/v1/rotasCriadas
-  app.setGlobalPrefix('/api/v1')
+  app.setGlobalPrefix(configService.preFix)
 
   // Pipe de validação, que valida o corpo da requisição de acordo com o schema/interface/type
   app.useGlobalPipes(new ValidationPipe())
   app.useGlobalInterceptors(new TransformInterceptor())
 
+  app.enableCors()
   // await app.listen(Number(process.env.PORT) || 3333)
   await app.listen(configService.portApi)
   console.log(`This application is running on: ${await app.getUrl()}`)

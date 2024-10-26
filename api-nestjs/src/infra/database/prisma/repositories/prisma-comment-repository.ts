@@ -68,14 +68,22 @@ export class PrismaCommentRepository implements CommentRepository {
     page: number,
     perPage: number
   ): Promise<{
+    first: number
+    prev: number | null
+    next: number | null
+    last: number
+    pages: number
+    items: number
+    total: number
     comments: {
       comment: Comment
       user: User
     }[]
-    total: number
-    totalPerPage: number
   }> {
     const total = await this.prisma.comment.count() // Total de comentários no banco
+
+    // Calcular número de páginas
+    const pages = Math.ceil(total / perPage)
 
     const offset = (page - 1) * perPage
 
@@ -91,6 +99,8 @@ export class PrismaCommentRepository implements CommentRepository {
           select: {
             githubUser: true,
             username: true,
+            createdAt: true,
+            updatedAt: true,
             id: true
           }
         }
@@ -102,13 +112,30 @@ export class PrismaCommentRepository implements CommentRepository {
         createdAt: 'desc'
       }
     })
+    // Definir navegação de páginas
+    const first = 1
+    const last = pages
+    const prev = page > 1 ? page - 1 : null
+    const next = page < pages ? page + 1 : null
     return {
+      first,
+      prev,
+      next,
+      last,
+      pages,
+      items: perPage, // O items é o número de itens por página
+      total,
       comments: comments.map((comment) => ({
         comment: PrismaCommentMapper.toDomain(comment),
-        user: PrismaUserMapper.toDomain(comment.user)
-      })),
-      total,
-      totalPerPage: comments.length
+        user: PrismaUserMapper.toDomain({
+          id: comment.user.id,
+          githubUser: comment.user.githubUser,
+          username: comment.user.username,
+          createdAt: comment.user.createdAt,
+          updatedAt: comment.user.updatedAt,
+          accessToken: ''
+        })
+      }))
     }
   }
 

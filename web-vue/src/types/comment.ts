@@ -1,6 +1,6 @@
 import { toTypedSchema } from '@vee-validate/zod'
 import * as z from 'zod'
-import { User } from './user'
+import { UserResponse } from './user'
 
 // export type Form = {
 //   email: string
@@ -23,11 +23,38 @@ export const createCommentForm = toTypedSchema(commentSchema)
 
 export type CommentFormRequest = z.infer<typeof commentSchema>
 
-export type CommentResponse = {
-  _id: string
-  user: User
-  title: string
-  content: string
-  createdAt: string
-  updatedAt?: string
+type Comment = {
+  comment: {
+    _id: string
+    comment: {
+      title: {
+        title: string
+      }
+      content: {
+        content: string
+      }
+      createdAt: string
+      updatedAt?: string
+    }
+  }
+  user: UserResponse
 }
+
+type CommentResponse = {
+  data: {
+    comments: Comment[]
+    first: number
+    items: number
+    last: number
+    next: number | null
+    pages: number
+    prev: number | null
+    total:
+      | number
+      | {
+          count: number
+        }
+  }
+}
+
+export type { CommentResponse, Comment }

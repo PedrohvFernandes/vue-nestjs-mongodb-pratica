@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CommentResponse } from '@/types'
+import { Comment } from '../types/comment'
 
 import { Ellipsis } from 'lucide-vue-next'
 
@@ -14,8 +14,9 @@ import {
 
 import { FormattedDate } from '.'
 
-const { content, createdAt, title, updatedAt, user } =
-  defineProps<CommentResponse>()
+const { comment, user } = defineProps<Comment>()
+
+const { title, content, createdAt, updatedAt } = comment.comment
 </script>
 
 <template>
@@ -26,10 +27,10 @@ const { content, createdAt, title, updatedAt, user } =
       <header class="flex justify-between items-center mb-2">
         <div class="flex flex-col">
           <p class="inline-flex items-center text-sm font-semibold">
-            {{ user.username }}
+            {{ user.user.username }}
           </p>
           <p class="italic text-sm text-muted-foreground">
-            GitHub: {{ user.githubUser }}
+            GitHub: {{ user.user.githubUser }}
           </p>
         </div>
         <!-- Dropdown menu -->
@@ -48,13 +49,13 @@ const { content, createdAt, title, updatedAt, user } =
       </header>
       <div class="flex flex-col gap-2 break-words">
         <h2 class="text-sm sm:text-base font-bold uppercase tracking-wider">
-          {{ title }}
+          {{ title.title }}
         </h2>
 
         <p
           class="h-full max-h-32 text-secondary overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-primary-foreground [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-foreground"
         >
-          {{ content }}
+          {{ content.content }}
         </p>
       </div>
       <div

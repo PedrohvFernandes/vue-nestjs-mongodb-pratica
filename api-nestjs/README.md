@@ -4,6 +4,8 @@
 
 - [Docs NestJs](https://docs.nestjs.com/first-steps)
 - [NestJS em 15 minutos, direto ao ponto!](https://www.youtube.com/watch?v=MDkpX6jBCEo)
+- [EP01 - Introdução ao NestJs | NestJS na Prática](https://www.youtube.com/watch?app=desktop&v=ju983eSUw-8&sttick=0)
+- [Crud completo com NestJS e MongoDB - NestJS para Iniciantes](https://www.youtube.com/watch?v=6mXi2RY5Wtw&sttick=0)
 - [Pipes](https://docs.nestjs.com/pipes)
   - [Validation](https://docs.nestjs.com/techniques/validation)
   - ```npm i class-validator class-transformer``` para fazer a validação dos dados 
@@ -18,6 +20,7 @@
     - [Docs configuration](https://docs.nestjs.com/techniques/configuration)
     - Comandos do nest:
       - ```nest g module nomeDoModule``` para criar um module, ele já coloca o modulo nomeDoModule.module.ts no app.module.ts
+      - ```nest g controller nomeDoController``` para criar um controller, ele já coloca o controller nomeDoController.controller.ts no app.module.ts. Ex: ```nest generate controller auth --flat``` para não criar uma pasta auth
   -[Setting Up Environment Variables and Configurations in NestJS](https://bhargavacharyb.medium.com/setting-up-environment-variables-and-configurations-in-nestjs-a6372fb81f31)
     - Aqui usamos a lib: ```npm install --save dotenv```
       - Importamos no main.ts e com isso toda a aplicação tem acesso as variáveis de ambiente
@@ -74,6 +77,9 @@
 - [Replace](https://stackoverflow.com/questions/41285211/overriding-interface-property-type-defined-in-typescript-d-ts-file)
 - [ObjectId](https://www.mongodb.com/pt-br/docs/manual/reference/method/ObjectId/)
 - [Controllers](https://docs.nestjs.com/controllers)
+- [Axios com Nestjs](https://docs.nestjs.com/techniques/http-module)
+- [NestJS: Make http requests using the @nestjs/axios package](https://yflooi.medium.com/make-http-requests-using-nestjs-native-nestjs-axios-package-4778eb19eb71)
+- [Authentication](https://docs.nestjs.com/security/authentication)
 
 - [Não há suporte para Prisma Migrate](https://www.prisma.io/docs/orm/overview/databases/mongodb#no-support-for-prisma-migrate)
   - npx prisma migrate dev --name init
@@ -94,12 +100,13 @@
   - [Set up MongoDB + Prisma with Docker](https://haneenmahdin.medium.com/set-up-mongodb-prisma-with-docker-c8c2f28e85de)
   - [todo-prisma](https://github.com/raugusto96/todo-prisma/tree/main)
   - [Expressões Regulares Explicadas](https://chatgpt.com/c/66e34301-038c-8010-b6c2-cc69e57723cb)
-  - [ignite-labe-node/notifications-service](https://github.com/PedrohvFernandes/ignite-labe-node/tree/main/notifications-service)
+  - [ignite-labe-node/notifications-service NESTJS](https://github.com/PedrohvFernandes/ignite-labe-node/tree/main/notifications-service)
   - [criando-minha-api-nest-com-type-orm](https://github.com/PedrohvFernandes/type-orm-estudos/tree/main/Criando%20uma%20API%20e%20CRUD%20completos%20com%20Nest%20e%20TypeORM/criando-minha-api-nest-com-type-orm)
   - [Sistema de paginação](https://github.com/PedrohvFernandes/nlw-unite/tree/main/api/src/routes)
   - [Sistema de paginação com docker](https://github.com/PedrohvFernandes/learn-to-use-docker/tree/main)
   - [Nlw expert](https://github.com/PedrohvFernandes/nlw-expert/tree/main)
-
+  - [controle-de-metas](https://github.com/PedrohvFernandes/controle-de-metas/tree/main)
+  - [maratona-explorer-ticket](https://github.com/Rocketseat/maratona-explorer-ticket/tree/main)
 
 ## Possíveis erros:
   - Error: MongoDB error
@@ -124,3 +131,17 @@ Kind: Server selection timeout: No available servers. Topology: { Type: Unknown,
   - [Erro de conexão MongoDB](https://chatgpt.com/c/67144f3b-10f8-8010-91b3-790bcbce7fcc)
   - [Error: 
 EPERM: operation not permitted, unlink 'C:\Users\Pedro\OneDrive\Documentos\GitHub\vue-nestjs-mongodb-pratica\api-nestjs\node_modules\.prisma\client\query_engine-windows.dll.node'](https://github.com/prisma/prisma/issues/9184)
+
+## Criando OAuth com GitHub com NestJs
+- [Video que me ajudou - Da UI ao Código - Ticket da Maratona Explorer](https://www.youtube.com/watch?v=qDerqzmELx8)
+- [NestJS Authentication with OAuth2.0: Adding External Providers](https://dev.to/tugascript/nestjs-authentication-with-oauth20-adding-external-providers-2kj)
+- [Creating social logins in NestJS](https://blog.logrocket.com/social-logins-nestjs/)
+ - Assim como no front-end, precisamos passar as duas envs para o back-end, a do client_id e a do client_secret
+ - E alem dessas duas, pegamos o code que o github nos retorna, e com ele pegamos o access_token
+- [What is secret key for JWT based authentication and how to generate it?](https://stackoverflow.com/questions/31309759/what-is-secret-key-for-jwt-based-authentication-and-how-to-generate-it)
+- [JWT - Criando a secret key](https://www.youtube.com/watch?v=ixQDGj-5zU8)
+  - [JWT.io](https://jwt.io/)
+  - env: ```JWT_SECRET= "secret"```
+  - Para gerar:
+    - no jwt.io, colocamos o secret e o payload, e ele nos retorna o token
+  - [secret no JWT, qual a função?](https://cursos.alura.com.br/forum/topico-secret-no-jwt-qual-a-funcao-181996)

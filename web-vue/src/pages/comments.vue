@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { CardComment, Pagination, SkeletonComment } from '@/components'
 import { getComment, keyComment, staleTimeComment } from '@/http'
-import { CommentResponseServerJson } from '@/types'
+import {
+  CommentResponse,
+  // CommentResponseServerJson
+} from '@/types'
 import { keepPreviousData, useQuery } from '@tanstack/vue-query'
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
@@ -10,12 +13,21 @@ const commentsSkeleton = Array.from({ length: 6 })
 
 const route = useRoute()
 
-const refPage = ref(route.query.page ? parseInt(route.query.page as string) : 1)
+// Se não vier nada ou 0
+const refPage = ref(
+  // Se a query string page existir, pegamos o valor dela. Se não, a página é 1
+  route.query.page
+    ? parseInt(route.query.page as string) < 1
+      ? 1 // Se vier 0
+      : parseInt(route.query.page as string) // Se vier um número
+    : 1, // Se não vier nada ou 0
+)
 
-const refPerPage = ref(12)
+const refPerPage = ref(16)
 
 const { data: commentsResponse, isLoading } =
-  useQuery<CommentResponseServerJson>({
+  // useQuery<CommentResponseServerJson>({
+  useQuery<CommentResponse>({
     queryKey: [keyComment, refPage],
     queryFn: () => getComment(refPage.value, refPerPage.value),
     staleTime: staleTimeComment,
@@ -58,21 +70,19 @@ export default {
       <template v-if="commentsResponse">
         <!-- v-for="(comment, index) in commentsResponse.data" -->
         <CardComment
-          v-for="comment in commentsResponse.data"
-          :content="comment.content"
-          :created-at="comment.createdAt"
-          :_id="comment._id"
-          :key="comment._id"
-          :title="comment.title"
-          :updated-at="comment.updatedAt"
+          v-for="comment in commentsResponse.data.comments"
+          :comment="comment.comment"
           :user="comment.user"
+          :_id="comment.comment._id"
+          :key="comment.comment._id"
         />
       </template>
     </div>
     <Pagination
       v-if="commentsResponse"
-      :pages="commentsResponse.pages"
-      :items="commentsResponse.items"
+      :pages="commentsResponse.data.pages"
+      :items="commentsResponse.data.items"
+      :total="commentsResponse.data.total"
       :page="refPage"
       :per-page="refPerPage"
     />
