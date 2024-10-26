@@ -6,7 +6,7 @@ import { CreateUserBody } from '@infra/http/dtos/user/create-user-body'
 import { GetUserBody } from '@infra/http/dtos/user/get-user-body'
 import { GetUserByName } from '@src/application/use-cases/user/get-user-by-name'
 import { UpdateUserToken } from '@src/application/use-cases/user/update-user-token'
-import { UpdateUserBody } from '@infra/http/dtos/user/update-user-body'
+import { UpdateAccessTokenUserBody } from '@infra/http/dtos/user/update-access-token-user-body'
 import { GetAccessTokenUser } from '@src/application/use-cases/auth/get-access-token-user'
 
 @Controller('users')
@@ -89,7 +89,7 @@ export class UserController {
   @Put('/:githubUser')
   async updateToken(
     @Param('githubUser') githubUser: string,
-    @Body() body: UpdateUserBody
+    @Body() body: UpdateAccessTokenUserBody
   ): Promise<{
     user: User
     messageError?: string
