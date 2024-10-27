@@ -88,11 +88,12 @@ export class AuthController {
 
     // Usa o serviço para validar o token existente
     const existingUser = await this.authService.validateToken(user.username)
-    if (existingUser) {
+    // Se o usuário já existe e tem um token válido, retorna o usuário, com o nome que foi validado do token, se não voltar o nome do usuário sendo nullo ou é porque o token não é válido ou expirou ou o usuario não existe
+    if (existingUser.githubUser) {
       return existingUser
     }
 
-    // Se não existe token válido, gera ou atualiza o token
+    // Se não existe token válido ou se não existe usuario, gera ou atualiza o token
     const newUser = await this.authService.generateOrUpdateToken(
       user,
       existingUser?.accessToken

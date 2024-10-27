@@ -26,6 +26,17 @@
       - Importamos no main.ts e com isso toda a aplicação tem acesso as variáveis de ambiente
 
 
+## Extensões
+
+### Nome: REST Client para usar os métodos HTTP nos arquivos .http
+{
+  ID: humao.rest-client
+  Descrição: REST Client for Visual Studio Code
+  Versão: 0.25.1
+  Editor: Huachao Mao
+  Link do Marketplace do VS: https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+}
+
 ## Sequencia de instalação
 
 ### Config
