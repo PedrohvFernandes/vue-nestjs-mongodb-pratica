@@ -281,6 +281,7 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
     - [6 Tailwind Comment Components](https://freefrontend.com/tailwind-comments/)
     - [Tailwind CSS Comments Sections](https://pagedone.io/blocks/e-commerce/comment-list)
     - [Tailwind CSS Comments Sections - Flowbite](https://flowbite.com/blocks/publisher/comments/)
+  -[Botão Logout com Ícones Responsivos](https://chatgpt.com/c/671fac43-9554-8010-bb4f-05d43d316f77)
 
 ### [Pagination e tanstack query](https://www.youtube.com/watch?v=0Njxq9UcL9s)
   - [TamsStack Query](https://tanstack.com/query/v5/docs/framework/vue/overview)
@@ -352,7 +353,7 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
               - Generate a new client secret or Regenerate client secret: Generate a new client secret, delete the old one and put the new one in the .env
                   
         - [Developer Settings](https://github.com/settings/developers) --> Entre ou crie uma nova aplicação(New OAuth App). Passe o Application Name, Homepage URL e Authorization callback URL --> Url de quando o usuário é redirecionado após autorizar o acesso, no caso um rota do back-end ou front, eu usei back, para poder manipular as informações do usuario dentro do meu banco de dados.
-        - Ex das minhas aplicações: comments(dev) --> http://localhost:5172 e http://localhost:3333/api/v1/auth/callback, comments(prod) --> https://comentarios-nine.vercel.app e https://comen.../api/v1/auth/callback
+          - Ex das minhas aplicações e as urls de redirecionamento: comments(dev) --> http://localhost:5172 e http://localhost:3333/api/v1/auth/callback, comments(prod) --> https://comentarios-nine.vercel.app e https://comen.../api/v1/auth/callback
     - Envs, passe o client_id e o client_secret, no modo dev pegar esses dois valores do application [comments(dev)](https://github.com/settings/applications/2752426) e passe para o arquivo .env daqui, para prod na vercel pegar esses dois valores do application [comments](https://github.com/settings/applications/2752473) e passe para ela.
     ```
       VITE_GITHUB_CLIENT_ID=seu_client_id
@@ -361,3 +362,37 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
     - Aqui no front eu crio um link assim: `https://github.com/login/oauth/authorize?client_id=${ConfigBases.comments.gitHub.oauth.clientId}`
 
   - [Docs OAuth GitHub](https://docs.github.com/pt/developers/apps/building-oauth-apps/authorizing-oauth-apps)
+  - [Botão de login do GitHub](https://docs.github.com/pt/enterprise-cloud@latest/apps/creating-github-apps/writing-code-for-a-github-app/building-a-login-with-github-button-with-a-github-app)
+    - Se a gente quiser, em vez dele redirecionar diretamente para o nosso back-end http://localhost:3333/api/v1/auth/callback, ele pode voltar para o nosso front com o codigo http://localhost:5172/login?code que antes ele passava para a rota do nosso back-end diretamente, e com isso via params, pegamos o coidgo e passamos para o nosso back-end(api/v1/auth/callback?{code}). "A mas antes passava direto no redirecionamento do github no Authorization callback URL", verdade, mas não conseguíamos por exemplo pegar o retorno dela, o loading... porque no fim o redirecionamento estava direto, era o github que ia no nosso back-end. Claro que no nosso back-end na rota auth eu poderia fazer um redirecionamento com as informações dos usuarios logados na rota como params, so que ficaria quase impossivel de manipular essas infos no front, sem falar que por exemplo eu não teria um loading.
+      - Então agora eu ainda vou continuar tendo o link do git, que ao clicar me leva para o github, so que apos autorizar ele me devolve um codigo para o meu front, que com isso eu manipulo ele no meu back-end diretamente, podendo pegar as informações do usuario logado, pegar o loading... de http://localhost:3333/api/v1/auth/callback para http://localhost:5172/login no Authorization callback URL(isso fica onde você cria a aplicação no github), que agora ao clicar no link e autorizar ele volta assim http://localhost:5172/login?code=7f3b8ec7c025e9205aba, que antes era assim http://localhost:3333/api/v1/auth/callback?code=7f3b8ec7c025e9205aba --> Diretamente no back-end, agora no front.
+        <div style="display: flex; justify-content: space-between;">
+
+          <div style="display: flex; flex-direction: column; justify-content: space-between; margin-right: 10px;">
+          <h4>Antes: Diretamente No back</h4>
+          <img src="../web-vue/_screenshot/Authorization-callback-URL-diretamente-Back-end.png" alt="authorization-callback-url" width="500px" height="300px">
+          </div>
+          
+          <div style="display: flex; flex-direction: column; justify-content: space-between;">
+          <h4>Depois: No front(Melhor opção para mim)
+          
+          </h4>
+          <img src="../web-vue/_screenshot/Authorization-callback-URL-para-o-front.png" alt="authorization-callback-url" width="500px" height="300px">
+          </div>
+      </div>
+    - [Context - Composables](https://www.youtube.com/watch?v=9dqbl_0A0P4)
+      - [Composition Api](https://vuejs.org/api/composition-api-setup.html#setup-context)
+      - [Autenticação Vue Query Ajustes](https://chatgpt.com/c/671f3e46-81ec-8010-8a12-a9f2f897fc0c)
+      - [Persistir dados com React](https://tanstack.com/query/latest/docs/framework/react/plugins/createSyncStoragePersister)
+      - [Persist Data With Vue 3](https://dev.to/grahammorby/persist-data-with-vue-3-38pc)
+      - [Entenda como funciona o sistema de cache do react-query](https://www.youtube.com/watch?v=YmS5uo9ty2Q)
+      - [REACT QUERY - Como usar o React Query para armazenar e manipular dados do servidor em cache](https://www.youtube.com/watch?v=lgHnanYVXBw)
+      - [Usar React Query ou armazenar em cache no backend?](https://www.reddit.com/r/reactjs/comments/152iw5y/using_react_query_or_cache_it_in_the_backend/?tl=pt-br)
+
+## Possível feature: websocket para receber os comentarios em tempo real
+
+  - [Demystifying NestJS WebSocket Gateways: A Step-by-Step Guide to Effective Testing](https://dev.to/jfrancai/demystifying-nestjs-websocket-gateways-a-step-by-step-guide-to-effective-testing-1a1f)
+  - [NestJS Websockets](https://docs.nestjs.com/websockets/gateways)
+  - [Nest JS Websockets - Basics](https://www.delightfulengineering.com/blog/nest-websockets/basics)
+  - [Building Real-time Applications with Nest.js and WebSockets](https://javascript.plainenglish.io/building-real-time-applications-with-nest-js-and-websockets-2a7114dc4544)
+  - [NestJS: A Guide to WebSocket Implementation](https://hrugvedprashantchavan.medium.com/nestjs-a-guide-to-websocket-implementation-655593fc73ab)
+  - [useWebSocket - Vue](https://vueuse.org/core/useWebSocket/)

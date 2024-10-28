@@ -1,5 +1,6 @@
 export { LoginHeader, LoggedHeader } from './headers'
 export { BottomLine } from './bottom-line'
+export { PublicRoute, PrivateRoute } from './routes'
 
 export { default as FooterDefault } from './footer-default.vue'
 export { default as ItemMenuLink } from './item-menu-link.vue'
@@ -11,3 +12,4 @@ export { default as BlueHighlightedSpan } from './blue-highlighted-span/blue-hig
 export { default as Pagination } from './pagination.vue'
 export { default as FormattedDate } from './formatted-date.vue'
 export { default as SkeletonComment } from './skeleton-comment.vue'
+export { default as ButtonLogout } from './button-logout.vue'

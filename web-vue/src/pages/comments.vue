@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { CardComment, Pagination, SkeletonComment } from '@/components'
-import { getComment, keyComment, staleTimeComment } from '@/http'
+import { getComment, keyComment, SIXTY_SECONDS_TIME_COMMENTS } from '@/http'
 import {
   CommentResponse,
   // CommentResponseServerJson
 } from '@/types'
-import { keepPreviousData, useQuery } from '@tanstack/vue-query'
+import { useQuery } from '@tanstack/vue-query'
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
@@ -30,10 +30,9 @@ const { data: commentsResponse, isLoading } =
   useQuery<CommentResponse>({
     queryKey: [keyComment, refPage],
     queryFn: () => getComment(refPage.value, refPerPage.value),
-    staleTime: staleTimeComment,
-    placeholderData: keepPreviousData,
+    staleTime: SIXTY_SECONDS_TIME_COMMENTS,
     // Cache time https://tanstack.com/query/latest/docs/framework/vue/guides/caching
-    gcTime: staleTimeComment,
+    gcTime: SIXTY_SECONDS_TIME_COMMENTS,
     refetchOnWindowFocus: false, // Evita que a query refaça quando a janela ganha foco
     refetchOnMount: false, // Não refaz a query ao remontar o componente
     refetchOnReconnect: false, // Evita refetch ao reconectar

@@ -7,6 +7,7 @@ export class AuthController {
   // eslint-disable-next-line no-useless-constructor
   constructor(private readonly authService: AuthService) {}
 
+  // Não precisamos escrever ?code... na URL, pois o passport-github já faz isso
   @Get('callback')
   @UseGuards(AuthGuard('github'))
   // async authCallback(@Req() req) {
@@ -90,7 +91,11 @@ export class AuthController {
     const existingUser = await this.authService.validateToken(user.username)
     // Se o usuário já existe e tem um token válido, retorna o usuário, com o nome que foi validado do token, se não voltar o nome do usuário sendo nullo ou é porque o token não é válido ou expirou ou o usuario não existe
     if (existingUser.githubUser) {
-      return existingUser
+      return {
+        githubUser: existingUser.githubUser,
+        username: existingUser.username
+        // accessToken: existingUser.accessToken // Nao quero retornar o token para o usuario
+      }
     }
 
     // Se não existe token válido ou se não existe usuario, gera ou atualiza o token
@@ -98,6 +103,11 @@ export class AuthController {
       user,
       existingUser?.accessToken
     )
-    return newUser
+
+    return {
+      githubUser: newUser.githubUser,
+      username: newUser.username
+      // accessToken: newUser.accessToken // Nao quero retornar o token para o usuario
+    }
   }
 }

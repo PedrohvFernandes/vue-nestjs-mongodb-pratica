@@ -35,4 +35,4 @@ export async function getComment(
 
 export const keyComment = 'comment'
 
-export const staleTimeComment = 1000 * 60 // 60 seconds // se colocar mais um * 5, // 5 minutos.
+export const SIXTY_SECONDS_TIME_COMMENTS = 1000 * 60 // 60 seconds // se colocar mais um * 5, // 5 minutos.

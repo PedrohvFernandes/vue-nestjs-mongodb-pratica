@@ -41,6 +41,11 @@ export default {
         // Como o nosso backend já está configurado para retornar a paginação correta, não precisamos mais dessa verificação. Porque antes usávamos o JSON Server para simular um backend, agora temos um backend real
         return `/comments?page=${page}&perPage=${perPage}`
       },
+      user: {
+        auth(codeGitHub: string | null) {
+          return `/auth/callback?code=${codeGitHub}`
+        },
+      },
     },
   },
 }

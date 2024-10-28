@@ -6,10 +6,32 @@ import {
   Logo,
 } from '@/components'
 import { Button } from '@/components/ui/button'
+import { toast } from '@/components/ui/toast'
 import { ConfigBases } from '@/config'
-import { ExternalLinkIcon, GithubIcon } from 'lucide-vue-next'
+import { useAuth } from '@/contexts/use-auth'
+import { ExternalLinkIcon, GithubIcon, LoaderCircle } from 'lucide-vue-next'
+import { useRoute } from 'vue-router'
 
 const signInUrl = `https://github.com/login/oauth/authorize?client_id=${ConfigBases.comments.gitHub.oauth.clientId}`
+
+const { isLoading } = useAuth()
+
+const route = useRoute()
+
+toast({
+  title: 'Bem-vindo!',
+  description:
+    'Faça login com sua conta do GitHub para começar a compartilhar curiosidades.',
+  variant: 'success',
+})
+
+if (route.query.error) {
+  toast({
+    title: 'Você cancelou o login!',
+    description: 'Para continuar, faça login com sua conta do GitHub.',
+    variant: 'destructive',
+  })
+}
 </script>
 
 <template>
@@ -29,46 +51,53 @@ const signInUrl = `https://github.com/login/oauth/authorize?client_id=${ConfigBa
         </BlueHighlightedSpan>
         🙂‍↔️
       </strong>
-
-      <BottomLine
-        variant-bottom="bottom12"
-        variant-color-bottom="colorTertiary"
-        variant-opacity="opacity100"
-        class="mt-10"
-      >
-        <Button
-          class="gap-2 p-6 rounded font-bold"
-          variant="secondary"
-          :as-child="true"
+      <div class="flex flex-col gap-2 items-center">
+        <BottomLine
+          variant-bottom="bottom12"
+          variant-color-bottom="colorTertiary"
+          variant-opacity="opacity100"
+          class="mt-10"
         >
-          <a class="flex justify-center items-center gap-2" :href="signInUrl">
-            <GithubIcon />
-
-            Faça login com GitHub
-          </a>
-        </Button>
-      </BottomLine>
-
-      <BottomLine
-        variant-bottom="bottom12"
-        variant-color-bottom="colorTertiary"
-        variant-opacity="opacity100"
-      >
-        <Button
-          class="flex justify-center items-center gap-2 p-6 rounded font-bold"
-          :as-child="true"
-          variant="ghost"
-        >
-          <a
-            :href="ConfigBases.comments.gitHub.baseUrls.link"
-            :target="ConfigBases.comments.gitHub.target.blank"
+          <Button
+            class="p-6 rounded font-bold"
+            variant="secondary"
+            :disabled="isLoading"
           >
-            <GithubIcon />
-            Crie sua conta no GitHub
-            <ExternalLinkIcon class="size-5" />
-          </a>
-        </Button>
-      </BottomLine>
+            <a :href="signInUrl">
+              <LoaderCircle
+                v-if="isLoading"
+                class="size-5 animate-spin"
+                aria-hidden="true"
+              />
+
+              <span v-else class="flex justify-center items-center gap-2"
+                ><GithubIcon /> Faça login com o GitHub</span
+              >
+            </a>
+          </Button>
+        </BottomLine>
+
+        <BottomLine
+          variant-bottom="bottom12"
+          variant-color-bottom="colorTertiary"
+          variant-opacity="opacity100"
+        >
+          <Button
+            class="flex justify-center items-center gap-2 p-6 rounded font-bold"
+            :as-child="true"
+            variant="ghost"
+          >
+            <a
+              :href="ConfigBases.comments.gitHub.baseUrls.link"
+              :aria-disabled="true"
+            >
+              <GithubIcon />
+              Crie sua conta no GitHub
+              <ExternalLinkIcon class="size-5" />
+            </a>
+          </Button>
+        </BottomLine>
+      </div>
     </div>
 
     <CardComment

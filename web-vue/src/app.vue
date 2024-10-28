@@ -12,7 +12,16 @@ import { Toaster } from '@/components/ui/toast'
 -->
 <template>
   <Toaster />
-  <!-- A logica hoje funciona assim: Esse RouteView pega o que vem a partir da rota / ou seja o DefaultLayout. E dentro do DefaultLayout tem outro RouteView que pega o que vem como rota filho, ex: /comments -->
+  <!-- A logica hoje funciona assim: Esse RouteView pega o que vem a partir da rota em routes.ts de acordo com a sequencia de filhos
+   App
+    - RouterView
+    - PrivateRoute
+      - RouteView
+      - DefaultLayoutLogged
+        - RouteView
+        - Home
+        - Comments
+  -->
   <RouterView />
 </template>
 

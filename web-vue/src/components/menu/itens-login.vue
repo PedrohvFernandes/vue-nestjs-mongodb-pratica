@@ -13,9 +13,5 @@ const props = defineProps<{ class?: string }>()
       :to="ConfigRoutes.comments.login.path"
       :name="ConfigRoutes.comments.login.name"
     />
-    <ItemMenuLink
-      :to="ConfigRoutes.comments.comments.path"
-      :name="ConfigRoutes.comments.comments.name"
-    />
   </Itens>
 </template>
