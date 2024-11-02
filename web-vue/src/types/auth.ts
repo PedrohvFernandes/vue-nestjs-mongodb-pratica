@@ -4,6 +4,7 @@ interface AuthResponse {
   data: {
     githubUser: string
     username: string
+    userId: string
     // accessToken: string // Não vou usar o accessToken por enquanto aqui no front, não acho seguro
   }
 }

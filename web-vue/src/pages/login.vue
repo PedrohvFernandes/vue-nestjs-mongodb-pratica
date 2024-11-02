@@ -111,6 +111,7 @@ if (route.query.error) {
           },
           createdAt: '2021-09-01T00:00:00Z',
           updatedAt: '2021-09-01T00:00:00Z',
+          userId: 'user1',
         },
       }"
       :user="{

@@ -93,20 +93,22 @@ export class AuthController {
     if (existingUser.githubUser) {
       return {
         githubUser: existingUser.githubUser,
-        username: existingUser.username
+        username: existingUser.username,
+        userId: existingUser.userId
         // accessToken: existingUser.accessToken // Nao quero retornar o token para o usuario
       }
     }
 
     // Se não existe token válido ou se não existe usuario, gera ou atualiza o token
-    const newUser = await this.authService.generateOrUpdateToken(
-      user,
-      existingUser?.accessToken
-    )
+    const newUser = await this.authService.generateOrUpdateToken(user, {
+      existingToken: existingUser.accessToken,
+      userId: existingUser.userId
+    })
 
     return {
       githubUser: newUser.githubUser,
-      username: newUser.username
+      username: newUser.username,
+      userId: newUser.userId
       // accessToken: newUser.accessToken // Nao quero retornar o token para o usuario
     }
   }

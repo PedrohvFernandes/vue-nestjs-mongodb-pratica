@@ -31,9 +31,11 @@ export class PrismaUserMapper {
   // Um mapper somente para o token
   static toDomainAccessToken(raw: RawUser): {
     accessToken: string
+    userId: string
   } {
     return {
-      accessToken: raw.accessToken
+      accessToken: raw.accessToken,
+      userId: raw.id
     }
   }
 }

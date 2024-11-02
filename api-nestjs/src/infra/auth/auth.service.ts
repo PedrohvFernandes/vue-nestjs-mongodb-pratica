@@ -18,62 +18,80 @@ export class AuthService {
     githubUser: string
     username: string
     accessToken: string
+    userId: string
   } | null> {
     // Verifica se o usuário já existe, se ele existe, retorna o token do usuário
-    const tokenResponse = await this.axiosService.get<{
-      token: {
-        accessToken: string
-      }
-      messageError?: string
-    }>(
-      `${this.config.apiComments}${this.config.preFix}/users/accesstoken/${githubUser}`
-    )
-    // Se existe o usuario e se esta valido o token dele
-    if (
-      !tokenResponse.data.messageError &&
-      tokenResponse.data &&
-      tokenResponse.data.token.accessToken
-    ) {
-      // Certifica-se de que o token existe
-      try {
-        // Tenta validar o token existente
-        this.jwtService.verify(tokenResponse.data.token.accessToken, {
-          secret: this.config.jwtSecret,
-          maxAge: '10h' // Define o tempo máximo de validade como 10 horas
-        })
-        // Resolve o token e retorna as informações do usuário
-        const { githubUser, username } =
-          await this.axiosService.resolveTokenJWT(
-            tokenResponse.data.token.accessToken
-          )
+    try {
+      const tokenResponse = await this.axiosService.get<{
+        token: {
+          accessToken: string
+          userId: string
+        }
+      }>(
+        `${this.config.apiComments}${this.config.preFix}/users/accesstoken/${githubUser}`
+      )
 
-        // Se o token é válido, retorna o usuário com o token existente
-        return {
-          githubUser,
-          username,
-          accessToken: tokenResponse.data.token.accessToken
+      // Se existe o usuario e se esta valido o token dele
+      if (tokenResponse.data && tokenResponse.data.token.accessToken) {
+        // Certifica-se de que o token existe
+        try {
+          // Tenta validar o token existente
+          this.jwtService.verify(tokenResponse.data.token.accessToken, {
+            secret: this.config.jwtSecret,
+            maxAge: '10h' // Define o tempo máximo de validade como 10 horas
+          })
+          // Resolve o token e retorna as informações do usuário
+          const { githubUser, username } =
+            await this.axiosService.resolveTokenJWT(
+              tokenResponse.data.token.accessToken
+            )
+
+          // Se o token é válido, retorna o usuário com o token existente
+          return {
+            githubUser,
+            username,
+            accessToken: tokenResponse.data.token.accessToken,
+            userId: tokenResponse.data.token.userId
+          }
+        } catch (error) {
+          // Se o token não é válido ou expirou, vamos atualizar o token
+          error.message = 'Token expirado ou inválido. Gerando um novo token.'
+          console.error(error)
+          // Se o token não é valido, então retorna null o githubUser e o username, mas retorna o accessToken para atualizar o token que ja exsite do usuario para ser trocado por um novo token
+          return {
+            githubUser: null,
+            username: null,
+            userId: tokenResponse.data.token.userId,
+            accessToken: tokenResponse.data.token.accessToken
+          }
         }
-      } catch (error) {
-        // Se o token não é válido ou expirou, vamos atualizar o token
-        error.message = 'Token expirado ou inválido. Gerando um novo token.'
-        console.error(error)
-        // Se o token não é valido, então retorna null o githubUser e o username, mas retorna o accessToken para atualizar o token
-        return {
-          githubUser: null,
-          username: null,
-          accessToken: tokenResponse.data.token.accessToken
-        }
+      }
+    } catch (error) {
+      error.message = 'Usuário não encontrado. Gerando um novo token.'
+      console.error(error)
+      // Se não existe o usuario, não existe o token, então ele é novo no sistema, vamos criar ele e dar um token
+      return {
+        githubUser: null,
+        username: null,
+        userId: null,
+        accessToken: null
       }
     }
-    // Se não existe o usuario, não existe o token, então retorna tudo nullo
-    return null
   }
 
   // Função para gerar ou atualizar o token do usuário
   async generateOrUpdateToken(
     user: any,
-    existingToken?: string
-  ): Promise<{ githubUser: string; username: string; accessToken: string }> {
+    existingUser: {
+      existingToken: string
+      userId: string
+    }
+  ): Promise<{
+    githubUser: string
+    username: string
+    accessToken: string
+    userId: string
+  }> {
     // Da continuidade ao processo de autenticação
     // Se o token expirou ou o usuário não existe, cria um novo token e o usuário
 
@@ -85,16 +103,20 @@ export class AuthService {
     const { githubUser, username } =
       await this.axiosService.resolveTokenJWT(accessToken)
 
-    // Se existe o token do usuario que não esta valido, atualiza o token, se não, cria um novo usuario com o token
-    if (existingToken) {
+    // Se existe o token do usuario que não esta valido, atualiza o token e envia ele, e o seu id que ja exsite no banco de dados, se não, cria um novo usuario com o token, e pega o id do usuario criado
+    if (existingUser && existingUser.existingToken) {
       await this.axiosService.put(
         `${this.config.apiComments}${this.config.preFix}/users/${githubUser}`,
         {
           accessToken
         }
       )
-    } else {
-      await this.axiosService.post<User>(
+
+      return { githubUser, username, accessToken, userId: existingUser.userId }
+    }
+
+    if (!existingUser.existingToken) {
+      const userCreated = await this.axiosService.post<User>(
         `${this.config.apiComments}${this.config.preFix}/users`,
         {
           githubUser,
@@ -102,8 +124,7 @@ export class AuthService {
           accessToken
         }
       )
+      return { githubUser, username, accessToken, userId: userCreated.data.id }
     }
-
-    return { githubUser, username, accessToken }
   }
 }

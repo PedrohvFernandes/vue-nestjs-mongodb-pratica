@@ -1,5 +1,5 @@
 export class CommentNotFound extends Error {
   constructor() {
-    super('Comment not found')
+    super('Comentário não encontrado')
   }
 }

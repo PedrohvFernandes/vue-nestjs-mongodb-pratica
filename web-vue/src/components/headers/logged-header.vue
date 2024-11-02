@@ -13,12 +13,16 @@ const nameResize = () => {
   const name = user.value?.data.githubUser
 
   if (name) {
-    if (width.value < 330) {
+    if (width.value < 331) {
       return `${name.slice(0, 0)}` // Não exibe o nome
     }
 
+    if (width.value < 340) {
+      return `${name.slice(0, 1)}...` // Não exibe o nome
+    }
+
     if (width.value < 377) {
-      return `${name.slice(0, 4)}...` // Exibe até 4 letras seguidas de '...'
+      return `${name.slice(0, 3)}...` // Exibe até 4 letras seguidas de '...'
     }
 
     if (width.value < 372) {

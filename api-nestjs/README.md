@@ -91,6 +91,8 @@
 - [Axios com Nestjs](https://docs.nestjs.com/techniques/http-module)
 - [NestJS: Make http requests using the @nestjs/axios package](https://yflooi.medium.com/make-http-requests-using-nestjs-native-nestjs-axios-package-4778eb19eb71)
 - [Authentication](https://docs.nestjs.com/security/authentication)
+- [Como tratar Error no nestj](https://chatgpt.com/c/67207544-f8ac-8010-a8c4-84ae3e53d11e)
+
 
 - [Não há suporte para Prisma Migrate](https://www.prisma.io/docs/orm/overview/databases/mongodb#no-support-for-prisma-migrate)
   - npx prisma migrate dev --name init

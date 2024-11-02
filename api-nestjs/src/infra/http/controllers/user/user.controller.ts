@@ -27,26 +27,23 @@ export class UserController {
   }> {
     const { userId } = body
 
-    const { user, messageError } = await this.getUser.execute({ userId })
+    const { user } = await this.getUser.execute({ userId })
 
     return {
-      user,
-      messageError
+      user
     }
   }
 
   @Get('/:githubUser')
   async getUserByNameParams(@Param('githubUser') githubUser: string): Promise<{
     user: User
-    messageError?: string
   }> {
-    const { user, messageError } = await this.getUserByName.execute({
+    const { user } = await this.getUserByName.execute({
       githubUser
     })
 
     return {
-      user,
-      messageError
+      user
     }
   }
 
@@ -54,35 +51,32 @@ export class UserController {
   async getAccessToken(@Param('githubUser') githubUser: string): Promise<{
     token: {
       accessToken: string
+      userId: string
     }
-    messageError?: string
   }> {
-    const { token, messageError } = await this.getAccessTokenUser.execute({
+    const { token } = await this.getAccessTokenUser.execute({
       githubUser
     })
 
     return {
-      token,
-      messageError
+      token
     }
   }
 
   @Post()
   async create(@Body() body: CreateUserBody): Promise<{
     user: User
-    messageError?: string
   }> {
     const { githubUser, username, accessToken } = body
 
-    const { user, messageError } = await this.createUser.execute({
+    const { user } = await this.createUser.execute({
       githubUser,
       username,
       accessToken
     })
 
     return {
-      user,
-      messageError
+      user
     }
   }
 
@@ -92,18 +86,16 @@ export class UserController {
     @Body() body: UpdateAccessTokenUserBody
   ): Promise<{
     user: User
-    messageError?: string
   }> {
     const { accessToken } = body
 
-    const { user, messageError } = await this.updateUserToken.execute({
+    const { user } = await this.updateUserToken.execute({
       githubUser,
       accessToken
     })
 
     return {
-      user,
-      messageError
+      user
     }
   }
 }

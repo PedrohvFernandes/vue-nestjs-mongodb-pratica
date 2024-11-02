@@ -35,10 +35,10 @@ export class PrismaCommentRepository implements CommentRepository {
     return PrismaCommentMapper.toDomain(commentCreated)
   }
 
-  async update(comment: Comment): Promise<void> {
+  async update(comment: Comment): Promise<Comment> {
     const raw = PrismaCommentMapper.toPrisma(comment)
 
-    await this.prisma.comment.update({
+    const commentUpdated = await this.prisma.comment.update({
       where: {
         id: comment.id
       },
@@ -48,6 +48,12 @@ export class PrismaCommentRepository implements CommentRepository {
         updatedAt: raw.updatedAt
       }
     })
+
+    if (!commentUpdated) {
+      return
+    }
+
+    return PrismaCommentMapper.toDomain(commentUpdated)
   }
 
   async findById(commentId: string): Promise<Comment> {

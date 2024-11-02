@@ -3,7 +3,7 @@ import { User } from '../entities/user'
 
 export abstract class CommentRepository {
   abstract create(comment: Comment): Promise<Comment>
-  abstract update(comment: Comment): Promise<void>
+  abstract update(comment: Comment): Promise<Comment>
   abstract findById(commentId: string): Promise<Comment | null>
   abstract findAll(
     page: number,

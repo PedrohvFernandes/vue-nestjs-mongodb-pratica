@@ -4,6 +4,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import { Toaster } from '@/components/ui/toast'
+import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
 // import { DefaultLayout } from './layouts'
 </script>
 
@@ -23,6 +24,7 @@ import { Toaster } from '@/components/ui/toast'
         - Comments
   -->
   <RouterView />
+  <VueQueryDevtools />
 </template>
 
 <!-- <style scoped>

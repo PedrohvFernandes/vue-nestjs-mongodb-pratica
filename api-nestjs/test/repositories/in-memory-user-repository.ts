@@ -42,13 +42,14 @@ export class InMemoryUserRepository implements UserRepository {
 
   async tokenIsValid(githubUser: string): Promise<{
     accessToken: string
+    userId
   }> {
     const user = this.users.find((item) => item.githubUser === githubUser)
 
     if (!user) {
-      return { accessToken: '' }
+      return { accessToken: '', userId: '' }
     }
 
-    return { accessToken: user.accessToken }
+    return { accessToken: user.accessToken, userId: user.id }
   }
 }

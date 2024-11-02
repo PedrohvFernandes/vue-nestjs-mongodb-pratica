@@ -1,6 +1,6 @@
 import { UserRepository } from '@application/repositories/users-repository'
 import { UserNotFound } from '../errors/user-not-found'
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 import { TokenNotFound } from '../errors/token-not-found'
 
 interface GetAccessTokenRequest {
@@ -8,10 +8,10 @@ interface GetAccessTokenRequest {
 }
 
 interface GetAccessTokenResponse {
-  token?: {
+  token: {
     accessToken: string
+    userId: string
   }
-  messageError?: string
 }
 
 @Injectable()
@@ -27,17 +27,13 @@ export class GetAccessTokenUser {
     )
 
     if (!userExist) {
-      return {
-        messageError: new UserNotFound().message
-      }
+      throw new NotFoundException(new UserNotFound().message)
     }
 
     const token = await this.userRepository.tokenIsValid(request.githubUser)
 
     if (!token) {
-      return {
-        messageError: new TokenNotFound().message
-      }
+      throw new NotFoundException(new TokenNotFound().message)
     }
 
     return { token }

@@ -6,5 +6,7 @@ export abstract class UserRepository {
   abstract findById(userId: string): Promise<User>
   abstract findByGithubUser(githubUser: string): Promise<User>
   abstract updateToken(user: User): Promise<User>
-  abstract tokenIsValid(githubUser: string): Promise<{ accessToken: string }>
+  abstract tokenIsValid(
+    githubUser: string
+  ): Promise<{ accessToken: string; userId: string }>
 }

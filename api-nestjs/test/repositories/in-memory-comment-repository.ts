@@ -19,6 +19,10 @@ export class InMemoryCommentRepository implements CommentRepository {
     if (commentIndex >= 0) {
       this.comments[commentIndex] = comment
     }
+
+    const commentUpdated = this.comments.find((item) => item.id === comment.id)
+
+    return commentUpdated
   }
 
   async findById(commentId: string): Promise<Comment | null> {

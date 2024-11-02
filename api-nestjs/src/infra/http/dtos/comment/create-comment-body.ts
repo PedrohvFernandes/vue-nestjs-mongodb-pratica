@@ -7,7 +7,7 @@ export class CreateCommentBody {
   userId: string
 
   @IsNotEmpty()
-  @Length(1, 200)
+  @Length(1, 1000)
   content: string
 
   @IsNotEmpty()

@@ -76,6 +76,7 @@ export class PrismaUserRepository implements UserRepository {
 
   async tokenIsValid(githubUser: string): Promise<{
     accessToken: string
+    userId: string
   }> {
     const user = await this.prisma.user.findFirst({
       where: {

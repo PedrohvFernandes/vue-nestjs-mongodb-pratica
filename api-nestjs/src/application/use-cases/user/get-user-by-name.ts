@@ -1,15 +1,14 @@
 import { User } from '@application/entities/user'
 import { UserRepository } from '@application/repositories/users-repository'
 import { UserNotFound } from '../errors/user-not-found'
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 
 interface GetUserByNameRequest {
   githubUser: string
 }
 
 interface GetUserByNameResponse {
-  user?: User
-  messageError?: string
+  user: User
 }
 
 @Injectable()
@@ -21,9 +20,7 @@ export class GetUserByName {
     const user = await this.userRepository.findByGithubUser(request.githubUser)
 
     if (!user) {
-      return {
-        messageError: new UserNotFound().message
-      }
+      throw new NotFoundException(new UserNotFound().message)
     }
 
     return { user }

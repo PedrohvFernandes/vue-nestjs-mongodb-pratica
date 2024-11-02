@@ -1,3 +1,10 @@
+import {
+  AuthRequest,
+  DeleteCommentRequest,
+  GetCommentsRequest,
+  UpdateCommentRequest,
+} from '@/types'
+
 export default {
   comments: {
     default: {
@@ -32,17 +39,28 @@ export default {
       name: 'Login',
     },
     backend: {
-      comments(page: number, perPage: number) {
-        // // Se for dev retorna a url com a paginação do JSON Server, senão retorna a url com paginação
-        // return isDev
-        //   ? `/comments?_page=${page}&_per_page=${perPage}` // Retorna a paginação do JSON Server
-        //   : `/comments?page=${page}&per_page=${perPage}`
+      comment: {
+        getComments({ page, perPage }: GetCommentsRequest) {
+          // // Se for dev retorna a url com a paginação do JSON Server, senão retorna a url com paginação
+          // return isDev
+          //   ? `/comments?_page=${page}&_per_page=${perPage}` // Retorna a paginação do JSON Server
+          //   : `/comments?page=${page}&per_page=${perPage}`
 
-        // Como o nosso backend já está configurado para retornar a paginação correta, não precisamos mais dessa verificação. Porque antes usávamos o JSON Server para simular um backend, agora temos um backend real
-        return `/comments?page=${page}&perPage=${perPage}`
+          // Como o nosso backend já está configurado para retornar a paginação correta, não precisamos mais dessa verificação. Porque antes usávamos o JSON Server para simular um backend, agora temos um backend real
+          return `/comments?page=${page}&perPage=${perPage}`
+        },
+        createComment() {
+          return `/comments`
+        },
+        deleteComment({ commentId, userId }: DeleteCommentRequest) {
+          return `/comments/?commentId=${commentId}&userId=${userId}`
+        },
+        updateComment({ commentId, userId }: UpdateCommentRequest) {
+          return `/comments?commentId=${commentId}&userId=${userId}`
+        },
       },
       user: {
-        auth(codeGitHub: string | null) {
+        auth({ codeGitHub }: AuthRequest) {
           return `/auth/callback?code=${codeGitHub}`
         },
       },

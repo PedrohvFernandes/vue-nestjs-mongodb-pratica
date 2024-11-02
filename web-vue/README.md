@@ -192,6 +192,28 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
 
   ### [Utilizando o SVG como um componente no Vue e Vite](https://wallacemaxters.com.br/blog/101/utilizando-o-svg-como-um-componente-no-vue-e-vite#google_vignette)
 
+  ### [Atualização de item Vue](https://chatgpt.com/c/6723f9bd-0a3c-8010-b122-4f58f3a61cfb)
+  
+  ### [Atualização com Vue Query](https://chatgpt.com/c/67222dc8-d554-8010-bd62-87e7b9db4361)
+
+  ### [Correção de mutação Vue](https://chatgpt.com/c/67212e6f-090c-8010-bac9-6d6afb6c9430)
+
+  ### [NestJs e mongodb](https://chatgpt.com/c/670f718a-e64c-8010-8abc-c4ac966718d9)
+
+  ### [Atualização de Comentário API](https://chatgpt.com/c/67207544-f8ac-8010-a8c4-84ae3e53d11e)
+
+  ### [Truncar nome usuário responsivo](https://chatgpt.com/c/671fcf09-c8b0-8010-bfc8-866038b35025)
+
+  ### [Autenticação Vue Query Ajustes](https://chatgpt.com/c/671f3e46-81ec-8010-8a12-a9f2f897fc0c)
+
+  ### [Botão com Ícones Responsivos](https://chatgpt.com/c/671fac43-9554-8010-bb4f-05d43d316f77)
+
+  ### [URL de callback de autorização](https://chatgpt.com/c/671b5254-1230-8010-9524-8d34eb7d5158)
+
+  ### [Atualização com TanStack Vue](https://chatgpt.com/c/6725dfcb-bb10-8010-8fd6-72f7e8d80fe1)
+
+  ### [Atualização seletiva com TanStack](https://chatgpt.com/c/67248fef-cee0-8010-bad7-2e591d2e977b)
+
   ### Erro na vercel, do deploy usando o Npm e vite: Error: Cannot find module @rollup/rollup-linux-x64-gnu
 
   Solução:
@@ -284,8 +306,17 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
   -[Botão Logout com Ícones Responsivos](https://chatgpt.com/c/671fac43-9554-8010-bb4f-05d43d316f77)
 
 ### [Pagination e tanstack query](https://www.youtube.com/watch?v=0Njxq9UcL9s)
-  - [TamsStack Query](https://tanstack.com/query/v5/docs/framework/vue/overview)
+  - [Tanstack Query](https://tanstack.com/query/v5/docs/framework/vue/overview)
+    - [Updates from Mutation Responses](https://tanstack.com/query/latest/docs/framework/vue/guides/updates-from-mutation-responses)
+    - [Optimistic Updates](https://tanstack.com/query/latest/docs/framework/vue/guides/optimistic-updates)
+    - [How to use the react-query.queryCache.setQueryData function in react-query](https://snyk.io/advisor/npm-package/react-query/functions/react-query.queryCache.setQueryData)
+    - [QueryData](https://tanstack.com/query/latest/docs/reference/QueryClient?from=reactQueryV3#queryclientsetquerydata)
+    - [getQueryData é sempre indefinido](https://github.com/TanStack/query/discussions/420)
     - [Vue Query](https://vue-query.vercel.app/#/,)
+
+### Removedor de palavrão
+ - [I Made a JavaScript Library that Leaves Profanity Speechless!](https://dev.to/best_codes/how-i-built-a-profanity-blocking-javascript-library-f8f)
+  - [Profanity Filter](https://github.com/2Toad/Profanity)
 
 ### Meus projetos que me ajudaram
   - [nlw-unite](https://github.com/PedrohvFernandes/nlw-unite/tree/main)
@@ -335,7 +366,6 @@ Extensão de pacote para ajudar no vue. Se não precisar do sass pode instalar a
   ```
 
   ### [Outras pesquisas que eu fiz](https://chatgpt.com/c/6707658f-ed84-8010-a130-8d288c50d513)
-
 
   ## Fazendo OAuth com o GitHub
   - [Video que me ajudou - Da UI ao Código - Ticket da Maratona Explorer](https://www.youtube.com/watch?v=qDerqzmELx8)

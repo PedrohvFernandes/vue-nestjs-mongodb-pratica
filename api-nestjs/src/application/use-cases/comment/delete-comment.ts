@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 import { CommentRepository } from '@src/application/repositories/comments-repository'
 import { CommentNotFound } from '../errors/comment-not-found'
 import { UserNotOwner } from '../errors/user-not-owner'
@@ -17,13 +17,13 @@ export class DeleteComment {
     const comment = await this.commentRepository.findById(request.id)
 
     if (!comment) {
-      throw new CommentNotFound()
+      throw new NotFoundException(new CommentNotFound().message)
     }
 
     const userIsOwner = comment.userId === request.userId
 
     if (!userIsOwner) {
-      throw new UserNotOwner()
+      throw new NotFoundException(new UserNotOwner().message)
     }
 
     await this.commentRepository.delete(request.id)

@@ -6,7 +6,6 @@ import { GetAllComments } from '@src/application/use-cases/comment/get-all-comme
 import { UpdateComment } from '@src/application/use-cases/comment/update-comment'
 import { CreateCommentBody } from '@infra/http/dtos/comment/create-comment-body'
 import { UpdateCommentBody } from '@infra/http/dtos/comment/update-comment-body'
-import { DeleteCommentBody } from '@infra/http/dtos/comment/delete-comment-body'
 import { DeleteComment } from '@src/application/use-cases/comment/delete-comment'
 
 @Controller('comments')
@@ -59,43 +58,39 @@ export class CommentController {
   }
 
   @Post()
-  async create(@Body() body: CreateCommentBody): Promise<{
-    comment?: Comment
-    messageError?: string
-  }> {
+  async create(@Body() body: CreateCommentBody): Promise<Comment> {
     const { content, userId, title } = body
 
-    const { comment, messageError } = await this.createComment.execute({
+    const { comment } = await this.createComment.execute({
       content,
       userId,
       title
     })
 
-    return { comment, messageError }
+    return comment
   }
 
   @Put()
-  async update(@Body() body: UpdateCommentBody): Promise<{
-    comment?: Comment
-    messageError?: string
-  }> {
-    const { comment, messageError } = await this.updateComment.execute({
-      id: body.id,
-      userId: body.userId,
+  async update(
+    @Body() body: UpdateCommentBody,
+    @Query('commentId') id: string,
+    @Query('userId') userId: string
+  ): Promise<Comment> {
+    const { comment } = await this.updateComment.execute({
+      id,
+      userId,
       content: body.content,
       title: body.title
     })
 
-    return {
-      comment,
-      messageError
-    }
+    return comment
   }
 
   @Delete()
-  async delete(@Body() body: DeleteCommentBody): Promise<void> {
-    const { id, userId } = body
-
+  async delete(
+    @Query('commentId') id: string,
+    @Query('userId') userId: string
+  ): Promise<void> {
     await this.deleteComment.execute({ id, userId })
   }
 }

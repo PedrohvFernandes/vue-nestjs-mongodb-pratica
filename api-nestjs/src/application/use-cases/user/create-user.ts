@@ -1,6 +1,6 @@
 import { User } from '@application/entities/user'
 import { UserRepository } from '@application/repositories/users-repository'
-import { Injectable } from '@nestjs/common'
+import { BadRequestException, Injectable } from '@nestjs/common'
 import { ErrorUserExist } from '../errors/error-user-exist'
 
 interface CreateUserRequest {
@@ -11,8 +11,7 @@ interface CreateUserRequest {
 }
 
 interface CreateUserResponse {
-  user?: User
-  messageError?: string
+  user: User
 }
 
 @Injectable()
@@ -39,9 +38,7 @@ export class CreateUser {
     const userCreated = await this.userRepository.create(user)
 
     if (!userCreated) {
-      return {
-        messageError: new ErrorUserExist().message
-      }
+      throw new BadRequestException(new ErrorUserExist().message)
     }
 
     return {

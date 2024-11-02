@@ -1,1 +1,5 @@
 export * from './get-comments'
+export * from './create-comment'
+export * from './get-user'
+export * from './update-comment'
+export * from './delete-comment'

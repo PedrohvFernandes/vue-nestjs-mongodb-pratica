@@ -5,7 +5,7 @@ const contentSchema = z.object({
   content: z
     .string()
     .min(1, 'Informe o seu comentário')
-    .max(200, 'Comentário muito longo')
+    .max(1000, 'Comentário muito longo')
 })
 
 export type contentType = z.infer<typeof contentSchema>

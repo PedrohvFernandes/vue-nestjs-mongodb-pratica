@@ -9,28 +9,20 @@ Content-Type: application/json
 {
   "content": "Um novo comentario",
   "title": "Um novo titulo",
-  "userId": "671c5c01b122bb7a32939c94"
+  "userId": "671e84f54be80183c41373eb"
 }
 
 ###
 
 # O user id e comment id deve ser um id valido, rode o seed npm run db:seed da aplicação e veja o id dele no banco de dados dando um npm run db:studio. Ou crie um comment novo com um usuario valido e veja o id dele e passe aqui para editar
-PUT http://localhost:3333/api/v1/comments
+PUT http://localhost:3333/api/v1/comments?commentId=671aa9b7634dc88e9ee2ce7f&userId=671a91e50389919e458e51a4
 Content-Type: application/json
 
 {
-  "id": "671aa9b7634dc88e9ee2ce7f",
-  "userId": "671a91e50389919e458e51a4",
   "content": "Um novo comentario 2",
   "title": "Um novo titulo 3"
 }
 
 ###
 
-DELETE  http://localhost:3333/api/v1/comments
-Content-Type: application/json
-
-{
-  "id": "671aa9b7634dc88e9ee2ce7f",
-  "userId": "671a91e50389919e458e51a4"
-}
+DELETE  http://localhost:3333/api/v1/comments?commentId=671aa9b7634dc88e9ee2ce7f&userId=671a91e50389919e458e51a4

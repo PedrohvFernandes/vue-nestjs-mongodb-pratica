@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 import { UserRepository } from '@src/application/repositories/users-repository'
 import { UserNotFound } from '../errors/user-not-found'
 import { User } from '@src/application/entities/user'
@@ -9,8 +9,7 @@ interface UpdateUserTokenRequest {
 }
 
 interface UpdateUserResponse {
-  user?: User
-  messageError?: string
+  user: User
 }
 
 @Injectable()
@@ -24,9 +23,7 @@ export class UpdateUserToken {
     )
 
     if (!userExist) {
-      return {
-        messageError: new UserNotFound().message
-      }
+      throw new NotFoundException(new UserNotFound().message)
     }
 
     const updateUser = new User(

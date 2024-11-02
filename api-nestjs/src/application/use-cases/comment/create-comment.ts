@@ -2,7 +2,7 @@ import { Comment } from '@application/entities/comment'
 import { Content } from '@application/entities/content'
 import { Title } from '@application/entities/title'
 import { CommentRepository } from '@application/repositories/comments-repository'
-import { Injectable } from '@nestjs/common'
+import { BadRequestException, Injectable } from '@nestjs/common'
 import { ErrorCreateComment } from '../errors/error-create-comment'
 
 interface CreateCommentRequest {
@@ -13,8 +13,7 @@ interface CreateCommentRequest {
 }
 
 interface CreateCommentResponse {
-  comment?: Comment
-  messageError?: string
+  comment: Comment
 }
 
 @Injectable()
@@ -34,9 +33,7 @@ export class CreateComment {
     const comment = await this.commentRepository.create(commentCreated)
 
     if (!comment) {
-      return {
-        messageError: new ErrorCreateComment().message
-      }
+      throw new BadRequestException(new ErrorCreateComment().message)
     }
 
     return {

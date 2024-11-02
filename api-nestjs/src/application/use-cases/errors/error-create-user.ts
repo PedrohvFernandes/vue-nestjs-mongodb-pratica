@@ -1,5 +1,5 @@
 export class ErrorCreateUser extends Error {
   constructor() {
-    super('Error to create user')
+    super('Erro ao criar usuário')
   }
 }
