@@ -28,8 +28,7 @@ exports.AuthModule = AuthModule = __decorate([
                 useFactory: async (configService) => {
                     return {
                         signOptions: { expiresIn: '10h' },
-                        secret: configService.get('JWT_SECRET'),
-                        callbackUrl: configService.get('GITHUB_CALLBACK_URL')
+                        secret: configService.get('JWT_SECRET')
                     };
                 },
                 inject: [config_1.ConfigService]

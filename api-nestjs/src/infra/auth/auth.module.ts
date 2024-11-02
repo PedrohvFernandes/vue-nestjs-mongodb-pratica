@@ -16,8 +16,8 @@ import { AuthService } from './auth.service'
       useFactory: async (configService: ConfigService) => {
         return {
           signOptions: { expiresIn: '10h' }, // 10 hours esse token expira
-          secret: configService.get<string>('JWT_SECRET'),
-          callbackUrl: configService.get<string>('GITHUB_CALLBACK_URL')
+          secret: configService.get<string>('JWT_SECRET')
+          // callbackUrl: configService.get<string>('GITHUB_CALLBACK_URL')
         }
       },
       inject: [ConfigService]
