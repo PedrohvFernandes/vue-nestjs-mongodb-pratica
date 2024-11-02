@@ -40,6 +40,7 @@ const envSchema = z.object({
   VITE_GITHUB_CLIENT_ID: z.string(),
   VITE_GITHUB_CLIENT_SECRET: z.string(),
   VITE_PRE_FIX: z.string(),
+  VITE_DEV_MODE: z.string(),
 })
 
 // O process.env é tudo o que vem dentro do .env, quando eu executo o parse, ele vai verificar se o que está dentro do .env é igual ao que está dentro do envSchema

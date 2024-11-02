@@ -5,6 +5,7 @@
 import { RouterView } from 'vue-router'
 import { Toaster } from '@/components/ui/toast'
 import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
+import { isDev } from './utils'
 // import { DefaultLayout } from './layouts'
 </script>
 
@@ -24,7 +25,9 @@ import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
         - Comments
   -->
   <RouterView />
-  <VueQueryDevtools />
+  <template v-if="isDev">
+    <VueQueryDevtools />
+  </template>
 </template>
 
 <!-- <style scoped>

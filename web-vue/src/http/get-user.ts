@@ -2,7 +2,7 @@ import { toast } from '@/components/ui/toast'
 import { AuthRequest, AuthResponse } from '../types'
 import { api } from '@/lib'
 import { ConfigRoutes } from '@/config'
-import { errorMessage } from '@/utils/error-message'
+import { errorMessage } from '@/utils'
 
 export async function getUser({
   codeGitHub,

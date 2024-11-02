@@ -6,7 +6,7 @@ import {
 } from '../types'
 import { api } from '@/lib'
 import { ConfigRoutes } from '@/config'
-import { errorMessage } from '@/utils/error-message'
+import { errorMessage } from '@/utils'
 import { ref, Ref } from 'vue'
 import { RouteLocationNormalizedLoadedGeneric } from 'vue-router'
 
