@@ -16,6 +16,8 @@ async function bootstrap() {
     app.enableCors();
     await app.listen(configService.portApi);
     console.log(`This application is running on: ${await app.getUrl()}`);
+    await app.init();
+    return app.getHttpAdapter().getInstance();
 }
 bootstrap();
 //# sourceMappingURL=main.js.map
