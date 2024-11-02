@@ -19,5 +19,5 @@ async function bootstrap() {
     await app.init();
     return app.getHttpAdapter().getInstance();
 }
-bootstrap();
+exports.default = bootstrap();
 //# sourceMappingURL=main.js.map
