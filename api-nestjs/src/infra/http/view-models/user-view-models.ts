@@ -1,4 +1,4 @@
-import { User } from '@src/application/entities/User'
+import { User } from '@src/application/entities/user'
 
 export class UserViewModel {
   static toHTTP(user: User) {
