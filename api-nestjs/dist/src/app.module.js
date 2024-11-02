@@ -12,13 +12,15 @@ const star_wars_module_1 = require("./star-wars/star-wars.module");
 const app_config_module_1 = require("./app-config/app-config.module");
 const http_module_1 = require("./infra/http/http.module");
 const app_controller_1 = require("./app.controller");
+const app_service_1 = require("./app.service");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [app_config_module_1.AppConfigModule, star_wars_module_1.StarWarsModule, http_module_1.HttpModule],
-        controllers: [app_controller_1.AppController]
+        controllers: [app_controller_1.AppController],
+        providers: [app_service_1.AppService]
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map
