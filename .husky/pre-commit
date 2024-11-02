@@ -14,11 +14,20 @@ cd ..
 # Run lint-staged in api-nestjs
 cd api-nestjs
 npx lint-staged
-npm run build
 if [ $? -ne 0 ]; then
   echo "Erro no lint do backend"
   exit 1
 fi
+
+# Run build in api-nestjs
+npm run build
+if [ $? -ne 0 ]; then
+  echo "Erro no build do backend"
+  exit 1
+fi
+
+# Adiciona a pasta dist ao commit, se necessário
+git add dist
 
 # Return to root
 cd ..
