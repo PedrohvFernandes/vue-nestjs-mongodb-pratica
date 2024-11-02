@@ -25,7 +25,7 @@ async function bootstrap() {
 
   app.enableCors()
   // await app.listen(Number(process.env.PORT) || 3333)
-  await app.listen(configService.portApi)
+  await app.listen(Number(process.env.PORT) || configService.portApi)
   console.log(`This application is running on: ${await app.getUrl()}`)
 
   await app.init()
