@@ -1,1 +1,0 @@
-{"version":3,"file":"star-wars.module.js","sourceRoot":"","sources":["../../../src/star-wars/star-wars.module.ts"],"names":[],"mappings":";;;;;;;;;AAAA,2CAAuC;AACvC,mGAA+F;AAC/F,uEAA8D;AAavD,IAAM,cAAc,GAApB,MAAM,cAAc;CAAG,CAAA;AAAjB,wCAAc;yBAAd,cAAc;IAR1B,IAAA,eAAM,EAAC;QAKN,OAAO,EAAE,CAAC,mCAAe,CAAC;QAC1B,WAAW,EAAE,CAAC,yCAAkB,CAAC;KAClC,CAAC;GACW,cAAc,CAAG"}
