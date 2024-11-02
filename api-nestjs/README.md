@@ -165,3 +165,4 @@ EPERM: operation not permitted, unlink 'C:\Users\Pedro\OneDrive\Documentos\GitHu
     - [[EN] - React.js (Vite) + Nest.js Monorepo DEPLOY to VERCEL](https://www.youtube.com/watch?v=Gn26OXjaDfM)
     - [Deploying a NestJS and Redis App on Vercel: As Easy as Pie!](https://medium.com/@jeremy.brunel.fullstack/deploying-a-nestjs-and-redis-app-on-vercel-as-easy-as-pie-eb15e2849717)
     - [Deploying Nest.js Existing App To Vercel using Git](https://okolijohnson69.medium.com/deploying-nest-js-existing-app-to-vercel-using-git-438765474420)
+    - [Need help to deploy NestJs app on Vercel](https://www.reddit.com/r/nestjs/comments/195pydl/need_help_to_deploy_nestjs_app_on_vercel/)
