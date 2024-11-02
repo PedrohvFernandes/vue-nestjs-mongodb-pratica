@@ -167,3 +167,4 @@ EPERM: operation not permitted, unlink 'C:\Users\Pedro\OneDrive\Documentos\GitHu
     - [Deploying Nest.js Existing App To Vercel using Git](https://okolijohnson69.medium.com/deploying-nest-js-existing-app-to-vercel-using-git-438765474420)
     - [Need help to deploy NestJs app on Vercel](https://www.reddit.com/r/nestjs/comments/195pydl/need_help_to_deploy_nestjs_app_on_vercel/)
     - [Deploy Your NestJS App Like a Pro with Vercel in 2024 (Step-by-Step Guide)](https://www.todayunboxed.com/deploy-your-nestjs-app-like-a-pro-with-vercel-in-2024-step-by-step-guide)
+    - [Vercel build dependency caching workaround](https://www.prisma.io/docs/orm/more/help-and-troubleshooting/help-articles/vercel-caching-issue)
