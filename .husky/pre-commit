@@ -14,6 +14,7 @@ cd ..
 # Run lint-staged in api-nestjs
 cd api-nestjs
 npx lint-staged
+npm run build
 if [ $? -ne 0 ]; then
   echo "Erro no lint do backend"
   exit 1

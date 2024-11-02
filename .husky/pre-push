@@ -1,10 +1,10 @@
-# Run build in api-nestjs
-cd api-nestjs
-npm run build
-if [ $? -ne 0 ]; then
-  echo "Erro no build do backend"
-  exit 1
-fi
+# # Run build in api-nestjs
+# cd api-nestjs
+# npm run build
+# if [ $? -ne 0 ]; then
+#   echo "Erro no build do backend"
+#   exit 1
+# fi
 
-# Return to root
-cd ..
+# # Return to root
+# cd ..
