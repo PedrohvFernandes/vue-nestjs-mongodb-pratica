@@ -32,6 +32,10 @@ export class AppConfigService {
     return this.config.get<string>('API_COMMENTS')
   }
 
+  get frontComments(): string {
+    return this.config.get<string>('FRONT_COMMENTS')
+  }
+
   get preFix(): string {
     return this.config.get<string>('PRE_FIX')
   }

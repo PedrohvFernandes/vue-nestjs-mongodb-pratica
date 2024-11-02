@@ -26,6 +26,7 @@ exports.AppConfigModule = AppConfigModule = __decorate([
                     GITHUB_CLIENT_SECRET: joi.string().required(),
                     JWT_SECRET: joi.string().required(),
                     API_COMMENTS: joi.string().required(),
+                    FRONT_COMMENTS: joi.string().required(),
                     PRE_FIX: joi.string().required()
                 })
             })

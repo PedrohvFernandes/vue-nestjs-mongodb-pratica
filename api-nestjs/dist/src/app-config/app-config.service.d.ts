@@ -8,5 +8,6 @@ export declare class AppConfigService {
     get githubClientSecret(): string;
     get jwtSecret(): string;
     get apiComments(): string;
+    get frontComments(): string;
     get preFix(): string;
 }

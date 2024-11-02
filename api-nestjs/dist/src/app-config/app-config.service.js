@@ -34,6 +34,9 @@ let AppConfigService = class AppConfigService {
     get apiComments() {
         return this.config.get('API_COMMENTS');
     }
+    get frontComments() {
+        return this.config.get('FRONT_COMMENTS');
+    }
     get preFix() {
         return this.config.get('PRE_FIX');
     }

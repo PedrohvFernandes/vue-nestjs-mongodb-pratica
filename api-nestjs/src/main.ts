@@ -23,7 +23,12 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe())
   app.useGlobalInterceptors(new TransformInterceptor())
 
-  app.enableCors()
+  // Habilita CORS
+  app.enableCors({
+    origin: configService.frontComments, // Substitua pelo seu domínio permitido
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Métodos permitidos
+    credentials: true // Permitir cookies, se necessário
+  })
   // await app.listen(Number(process.env.PORT) || 3333)
   await app.listen(configService.portApi)
   console.log(`This application is running on: ${await app.getUrl()}`)

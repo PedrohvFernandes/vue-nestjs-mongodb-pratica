@@ -13,7 +13,11 @@ async function bootstrap() {
     app.setGlobalPrefix(configService.preFix);
     app.useGlobalPipes(new common_1.ValidationPipe());
     app.useGlobalInterceptors(new transform_interceptor_1.TransformInterceptor());
-    app.enableCors();
+    app.enableCors({
+        origin: configService.frontComments,
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        credentials: true
+    });
     await app.listen(configService.portApi);
     console.log(`This application is running on: ${await app.getUrl()}`);
 }
