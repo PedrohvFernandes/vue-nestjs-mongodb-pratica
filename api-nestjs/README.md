@@ -158,3 +158,6 @@ EPERM: operation not permitted, unlink 'C:\Users\Pedro\OneDrive\Documentos\GitHu
   - Para gerar:
     - no jwt.io, colocamos o secret e o payload, e ele nos retorna o token
   - [secret no JWT, qual a função?](https://cursos.alura.com.br/forum/topico-secret-no-jwt-qual-a-funcao-181996)
+
+  ## Vercel e NestJs
+    - [How to deploy your NestJS apps on Vercel](https://dev.to/leduc1901/how-to-deploy-your-nestjs-apps-on-vercel-3nh9)
