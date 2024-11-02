@@ -14,7 +14,7 @@ async function bootstrap() {
     app.useGlobalPipes(new common_1.ValidationPipe());
     app.useGlobalInterceptors(new transform_interceptor_1.TransformInterceptor());
     app.enableCors();
-    await app.listen(Number(process.env.PORT) || 3333);
+    await app.listen(configService.portApi);
     console.log(`This application is running on: ${await app.getUrl()}`);
     await app.init();
     return app.getHttpAdapter().getInstance();
