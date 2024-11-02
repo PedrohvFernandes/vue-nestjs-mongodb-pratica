@@ -19,15 +19,18 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-# Run build in api-nestjs
-npm run build
-if [ $? -ne 0 ]; then
-  echo "Erro no build do backend"
-  exit 1
-fi
-
-# Adiciona a pasta dist ao commit, se necessário
-git add dist
-
 # Return to root
 cd ..
+
+# # Run build in api-nestjs
+# npm run build
+# if [ $? -ne 0 ]; then
+#   echo "Erro no build do backend"
+#   exit 1
+# fi
+
+# # Adiciona a pasta dist ao commit, se necessário
+# git add dist
+
+# # Return to root
+# cd ..

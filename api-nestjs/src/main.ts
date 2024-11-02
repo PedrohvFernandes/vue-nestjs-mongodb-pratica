@@ -25,10 +25,7 @@ async function bootstrap() {
 
   app.enableCors()
   // await app.listen(Number(process.env.PORT) || 3333)
-  await app.listen(Number(process.env.PORT) || configService.portApi)
+  await app.listen(configService.portApi)
   console.log(`This application is running on: ${await app.getUrl()}`)
-
-  await app.init()
-  return app.getHttpAdapter().getInstance()
 }
-export default bootstrap()
+bootstrap()
