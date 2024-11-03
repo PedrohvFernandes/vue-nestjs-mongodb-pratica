@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 import { toast } from '@/components/ui/toast'
 import { ConfigBases } from '@/config'
 import { useAuth } from '@/contexts/use-auth'
+import { cn } from '@/lib'
 import { ExternalLinkIcon, GithubIcon, LoaderCircle } from 'lucide-vue-next'
 import { useRoute } from 'vue-router'
 
@@ -59,11 +60,15 @@ if (route.query.error) {
           class="mt-10"
         >
           <Button
-            class="p-6 rounded font-bold"
+            class="p-6 rounded font-bold flex"
             variant="secondary"
             :disabled="isLoading"
+            :as-child="true"
           >
-            <a :href="signInUrl">
+            <a
+              :href="signInUrl"
+              :class="cn({ 'pointer-events-none opacity-50': isLoading })"
+            >
               <LoaderCircle
                 v-if="isLoading"
                 class="size-5 animate-spin"
