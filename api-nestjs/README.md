@@ -103,7 +103,8 @@
             - Aqui teremos os databases que foram criados, como o comments(database name serve como param da url de conexão) e dentro dele as tabelas: comments e users
             - [Collections](https://cloud.mongodb.com/v2/66f60925fecfa84548f894e4#/metrics/replicaSet/671350d80a9f6374fce51004/explorer/comments/users/find)
         - Obs: So fazemos isso aqui para testar a conexão, para depois conectar na vercel, depois que testou volte a url de conexão do BD do docker no .env aqui no local e rode o db:push e db:generate para gerar os arquivos do prisma, e conectar com o docker localmente
-
+    - Para vercel, basta colocar um env com o link do banco de dados do atlas, e "postinstall": "prisma generate && npx prisma db push" no script
+    - E colocar 0.0.0.0/0 em [Network Access](https://cloud.mongodb.com/v2/66f60925fecfa84548f894e4#/security/network/accessList) para dar acesso qualquer ip para modificar o BD
  - [Introduction to MongoDB connection URIs](https://www.prisma.io/dataguide/mongodb/connection-uris)
  - [Cloud mongodb atlas](https://cloud.mongodb.com/v2/66f60925fecfa84548f894e4#/security/database/users) --> Usuarios do banco de dados
   - Serviço da nuvem do mongodb
