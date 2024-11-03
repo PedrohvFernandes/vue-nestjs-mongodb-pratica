@@ -69,6 +69,41 @@
 
 - [Nestjs e MongoDB](https://chatgpt.com/c/670f718a-e64c-8010-8abc-c4ac966718d9) --> Perguntei pro chatgpt como conectar no mongodb e foi como descrito na documentação do prisma e do atlas, ele gerou o link certinho para conectar no banco de dados(o mesmo link que aparece quando clicamos em connect)
  - [MongoDB in prisma](https://www.prisma.io/docs/orm/overview/databases/mongodb)
+ - [mongodb-atlas-setup prisma](https://www.prisma.io/dataguide/mongodb/mongodb-atlas-setup)
+  - [Database Access username e senha do bd para ter acesso no atlas](https://cloud.mongodb.com/v2/66f60925fecfa84548f894e4#/security/database)
+    - Se esquece a senha do usuario admin, resetar a senha:
+    - Edit
+      - Edit password
+       - Auto generate secure password
+        - Update User
+    - basta criar um novo usuario não com a role admin
+      - Add new database user
+        - Username
+        - Password
+        - Role(pode ser admin, mas não é recomendado)
+        - Add User
+    - Esse username e senha vão ser usados para conectar no banco de dados
+  - [connection-urls prisma](https://www.prisma.io/docs/orm/reference/connection-urls)
+  - [Type Safety With Prisma & MongoDB](https://www.mongodb.com/developer/languages/typescript/type-safety-with-prisma-and-mongodb/)
+  - [Connect MongoDB Using Prisma ORM in NestJS](https://medium.com/@1neel.sabne/connect-mongodb-using-prisma-orm-in-nestjs-9ae2e2776de2)
+    - Trocou a o valor da DATABASE_URL do bd local usando docker para o db atlas local ou o inverso
+      - Pare a aplicação
+      - Troque o valor da DATABASE_URL
+      - Rode db:generate para gerar os arquivos do prisma
+      - Rode db:push para autenticar e criar as tabelas no banco de dados, dessa forma iremos syncronizar o banco de dados com o prisma
+      - Rode novamente db:generate para gerar os arquivos do prisma
+      - Rode a aplicação e pronto
+
+      - Para o db atlas
+        - Se depois disso tudo estiver dando erro de autenticação, verifique se o link do banco de dados está correto
+        - Se estiver dando algum outro erro vê se o BD que foi criado do db atlas não tem outro database:
+          - Indo em [Clusters](https://cloud.mongodb.com/v2/66f60925fecfa84548f894e4#/clusters)
+          - View monitoring
+          - Collections
+            - Aqui teremos os databases que foram criados, como o comments(database name serve como param da url de conexão) e dentro dele as tabelas: comments e users
+            - [Collections](https://cloud.mongodb.com/v2/66f60925fecfa84548f894e4#/metrics/replicaSet/671350d80a9f6374fce51004/explorer/comments/users/find)
+        - Obs: So fazemos isso aqui para testar a conexão, para depois conectar na vercel, depois que testou volte a url de conexão do BD do docker no .env aqui no local e rode o db:push e db:generate para gerar os arquivos do prisma, e conectar com o docker localmente
+
  - [Introduction to MongoDB connection URIs](https://www.prisma.io/dataguide/mongodb/connection-uris)
  - [Cloud mongodb atlas](https://cloud.mongodb.com/v2/66f60925fecfa84548f894e4#/security/database/users) --> Usuarios do banco de dados
   - Serviço da nuvem do mongodb
