@@ -204,4 +204,5 @@ EPERM: operation not permitted, unlink 'C:\Users\Pedro\OneDrive\Documentos\GitHu
     - [Deploy Your NestJS App Like a Pro with Vercel in 2024 (Step-by-Step Guide)](https://www.todayunboxed.com/deploy-your-nestjs-app-like-a-pro-with-vercel-in-2024-step-by-step-guide)
     - [Vercel build dependency caching workaround](https://www.prisma.io/docs/orm/more/help-and-troubleshooting/help-articles/vercel-caching-issue)
       - [Erro na API NestJS](https://chatgpt.com/c/672667aa-f44c-8010-94a3-1c79539df17a)
+        - Ajudou na conexão db atlas via vercel usando nestjs com prisma
     - [Prefix](https://vercel.com/docs/projects/domains/add-a-domain)
